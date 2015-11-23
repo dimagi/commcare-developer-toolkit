@@ -18,11 +18,11 @@
         android:layout_alignParentBottom="true"
         android:layout_below="@id/image_sizing_explanation" >
 
-        <dalvik.commcare.org.commcaredevelopertoolkit.utilities.UserResizableView
+        <dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView
             android:layout_height="match_parent"
             android:layout_width="match_parent" >
 
-        </dalvik.commcare.org.commcaredevelopertoolkit.utilities.UserResizableView>
+        </dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView>
 
     </RelativeLayout>
 

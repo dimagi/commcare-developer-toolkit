@@ -1,7 +1,6 @@
 package dalvik.commcare.org.commcaredevelopertoolkit.utilities;
 
 import android.os.Bundle;
-import android.view.View;
 
 import dalvik.commcare.org.commcaredevelopertoolkit.HomeActivity;
 import dalvik.commcare.org.commcaredevelopertoolkit.R;

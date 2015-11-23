@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaredevelopertoolkit.utilities;
+package dalvik.commcare.org.commcaredevelopertoolkit;
 
 import android.content.Context;
 import android.graphics.Canvas;

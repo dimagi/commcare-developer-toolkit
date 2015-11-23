@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.GridView;
 
+import dalvik.commcare.org.commcaredevelopertoolkit.utilities.DeviceInfoUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ImageSizingUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.StackTraceUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ToolkitUtility;
@@ -34,9 +35,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private ToolkitUtility[] getUtilitiesList() {
-        ToolkitUtility[] allUtilities = new ToolkitUtility[2];
+        ToolkitUtility[] allUtilities = new ToolkitUtility[3];
         allUtilities[0] = new ImageSizingUtility(this);
-        allUtilities[1] = new StackTraceUtility(this);
+        allUtilities[1] = new DeviceInfoUtility(this);
+        allUtilities[2] = new StackTraceUtility(this);
         return allUtilities;
     }
 
