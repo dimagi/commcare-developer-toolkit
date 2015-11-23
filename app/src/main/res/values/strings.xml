@@ -3,4 +3,5 @@
     <string name="display_name">CommCare Developer Toolkit</string>
     <string name="home_explanation">Welcome to the CommCare Developer Toolkit! This application provides several utilities to aid you in various aspects of successfully creating and using your own CommCare app. To get started, try out any of the utilities below.</string>
     <string name="action_settings">Settings</string>
+    <string name="image_sizing_explanation">Use the resizable bounding box below to get a feel for how your images will look at different sizes. Click on the bottom right-hand corner and drag to resize the box. When the box looks about the size that you want your image to appear, make note of the dimensions in pixels, and resize your image file to match.</string>
 </resources>

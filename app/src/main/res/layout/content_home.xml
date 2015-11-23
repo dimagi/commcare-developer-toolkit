@@ -17,8 +17,7 @@
         android:id="@+id/explanation_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/home_explanation" >
-    </TextView>
+        android:text="@string/home_explanation" />
 
     <FrameLayout
         android:layout_width="fill_parent"

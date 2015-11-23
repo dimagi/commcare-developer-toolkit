@@ -1,6 +1,7 @@
 package dalvik.commcare.org.commcaredevelopertoolkit.utilities;
 
-import android.media.Image;
+import android.os.Bundle;
+import android.view.View;
 
 import dalvik.commcare.org.commcaredevelopertoolkit.HomeActivity;
 import dalvik.commcare.org.commcaredevelopertoolkit.R;
@@ -9,6 +10,12 @@ import dalvik.commcare.org.commcaredevelopertoolkit.R;
  * Created by amstone326 on 11/23/15.
  */
 public class ImageSizingUtility extends ToolkitUtility {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.image_sizing_layout);
+    }
 
     public ImageSizingUtility() {
         super();
