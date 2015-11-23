@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- Core -->
+    <color name="cc_core_bg">#F2F2F1</color>
+    <color name="cc_core_text">#181715</color>
+
+    <!-- Brand -->
+    <color name="cc_brand_color">#004EBC</color>
+    <color name="cc_brand_bg">#BCDEFF</color>
+    <color name="cc_brand_text">#002C5F</color>
+
+    <!-- Neutral -->
+    <color name="cc_neutral_color">#685C53</color>
+    <color name="cc_neutral_bg">#D6D6D4</color>
+    <color name="cc_neutral_text">#373534</color>
+
+    <!-- Attention Positive -->
+    <color name="cc_attention_positive_color">#47B700</color>
+    <color name="cc_attention_positive_bg">#D5EACA</color>
+    <color name="cc_attention_positive_text">#216F00</color>
+
+    <!-- Attention Negative -->
+    <color name="cc_attention_negative_color">#E53E30</color>
+    <color name="cc_attention_negative_bg">#EFCFCB</color>
+    <color name="cc_attention_negative_text">#812627</color>
+
+</resources>

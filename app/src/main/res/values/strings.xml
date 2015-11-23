@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CommCareDeveloperToolkit</string>
+    <string name="display_name">CommCare Developer Toolkit</string>
+    <string name="home_explanation">Welcome to the CommCare Developer Toolkit! This application provides several utilities to aid you in various aspects of successfully creating and using your own CommCare app. To get started, try out any of the utilities below.</string>
+    <string name="action_settings">Settings</string>
+</resources>
