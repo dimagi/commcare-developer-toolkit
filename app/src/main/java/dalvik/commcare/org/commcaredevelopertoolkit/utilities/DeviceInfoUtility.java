@@ -30,6 +30,6 @@ public class DeviceInfoUtility extends ToolkitUtility {
 
     @Override
     public int getIconResId() {
-        return R.mipmap.image_sizing;
+        return R.mipmap.ic_device_info;
     }
 }
