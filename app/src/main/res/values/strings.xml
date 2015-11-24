@@ -4,5 +4,12 @@
     <string name="home_explanation">Welcome to the CommCare Developer Toolkit! This application provides several utilities to aid you in various aspects of successfully creating and using your own CommCare app. To get started, try out any of the utilities below.</string>
     <string name="action_settings">Settings</string>
     <string name="image_sizing_explanation">Use the resizable bounding box below to get a feel for how your images will look at different sizes. To resize the box, click on the bottom right-hand corner and drag. When it looks about the size you want your image to appear, make note of the dimensions and resize your image file to match.</string>
-    <string name="aspect_ratio_button_text">Enter Starting Aspect Ratio</string>
+    <string name="aspect_ratio_text">Aspect Ratio Lock</string>
+    <string name="clear_aspect_ratio_text">Clear Aspect Ratio</string>
+    <string name="width_label">width: </string>
+    <string name="height_label">height: </string>
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">CANCEL</string>
+    <string name="aspect_ratio_invalid_error">The dimensions you provided are either too small to show well on this screen, or represent an aspect ratio that is too large to show well on this screen.</string>
+    <string name="values_not_entered_error">Please enter a value for both dimensions</string>
 </resources>

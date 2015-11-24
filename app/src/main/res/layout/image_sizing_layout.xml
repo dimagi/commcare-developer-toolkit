@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_below="@id/image_sizing_explanation"
         android:gravity="center"
-        android:paddingBottom="@dimen/spacer_double" >
+        android:layout_marginBottom="@dimen/standard_spacer" >
 
         <TextView
             android:id="@+id/width_display"
@@ -34,19 +34,39 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/enter_aspect_ratio_button"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/aspect_ratio_button_text" />
+        android:id="@+id/aspect_ratio_buttons_wrapper"
+        android:layout_below="@id/dimensions_display"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/spacer_double" >
+
+        <Button
+            android:id="@+id/enter_aspect_ratio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/min_button_height"
+            android:gravity="center"
+            android:text="@string/aspect_ratio_text" />
+
+        <Button
+            android:id="@+id/clear_aspect_ratio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/min_button_height"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_toLeftOf="@id/enter_aspect_ratio_button"
+            android:layout_marginLeft="@dimen/standard_spacer"
+            android:text="@string/clear_aspect_ratio_text" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/resizable_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/dimensions_display" >
+        android:layout_below="@id/aspect_ratio_buttons_wrapper" >
 
         <dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView
             android:id="@+id/resizable_canvas"
