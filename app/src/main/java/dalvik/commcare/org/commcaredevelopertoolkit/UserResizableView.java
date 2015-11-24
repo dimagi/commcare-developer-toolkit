@@ -2,7 +2,6 @@ package dalvik.commcare.org.commcaredevelopertoolkit;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
@@ -25,6 +24,8 @@ public class UserResizableView extends View {
     private boolean resizeInProcess;
     private float lastResizeTouchX;
     private float lastResizeTouchY;
+
+    private ResizeListener listener;
 
     public UserResizableView(Context context) {
         super(context);
@@ -62,10 +63,10 @@ public class UserResizableView extends View {
     }
 
     private void handleUserTouch(float x, float y) {
-        Log.i("11/23", "handleUserTouch");
-        Log.i("11/23", "User x: " + x);
-        Log.i("11/23", "User y: " + y);
         if (!resizeInProcess && userTouchNearCurrentCorner(x, y)) {
+            Log.i("11/23", "handleUserTouch");
+            Log.i("11/23", "User x: " + x);
+            Log.i("11/23", "User y: " + y);
             resizeInProcess = true;
             lastResizeTouchX = x;
             lastResizeTouchY = y;
@@ -73,10 +74,10 @@ public class UserResizableView extends View {
     }
 
     private void handleUserDrag(float x, float y) {
-        Log.i("11/23", "handleUserDrag");
-        Log.i("11/23", "User x: " + x);
-        Log.i("11/23", "User y: " + y);
         if (resizeInProcess) {
+            Log.i("11/23", "handleUserDrag");
+            Log.i("11/23", "User x: " + x);
+            Log.i("11/23", "User y: " + y);
             final float dx = x - lastResizeTouchX;
             final float dy = y - lastResizeTouchY;
             Log.i("11/23", "dx: " + dx);
@@ -114,12 +115,26 @@ public class UserResizableView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        applyMinAndMaxRequirements();
+        redraw(canvas);
+        listener.onResize(cornerPositionX, cornerPositionY);
+    }
+
+    private void applyMinAndMaxRequirements() {
+        cornerPositionX = Math.max(75, Math.min(cornerPositionX, getMeasuredWidth()-50));
+        cornerPositionY = Math.max(75, Math.min(cornerPositionY, getMeasuredHeight()-50));
+    }
+
+    private void redraw(Canvas canvas) {
         Paint paint = new Paint();
-        paint.setColor(Color.parseColor("black"));
+        paint.setColor(getResources().getColor(R.color.cc_brand_color));
         canvas.drawRect(0, 0, cornerPositionX, cornerPositionY, paint);
-        paint.setColor(Color.parseColor("red"));
+        paint.setColor(getResources().getColor(R.color.cc_neutral_color));
         canvas.drawCircle(cornerPositionX, cornerPositionY, 30, paint);
     }
 
+    public void setResizeListener(ResizeListener listener) {
+        this.listener = listener;
+    }
 
 }

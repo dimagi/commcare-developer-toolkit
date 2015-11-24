@@ -9,23 +9,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/image_sizing_explanation"
-        android:paddingBottom="32dp" />
+        android:paddingBottom="@dimen/standard_spacer" />
+
+    <RelativeLayout
+        android:id="@+id/dimensions_display"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/image_sizing_explanation"
+        android:gravity="center"
+        android:paddingBottom="@dimen/spacer_double" >
+
+        <TextView
+            android:id="@+id/width_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/height_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_below="@id/width_display" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/enter_aspect_ratio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/aspect_ratio_button_text" />
 
     <RelativeLayout
         android:id="@+id/resizable_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/image_sizing_explanation" >
+        android:layout_below="@id/dimensions_display" >
 
         <dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView
+            android:id="@+id/resizable_canvas"
             android:layout_height="match_parent"
             android:layout_width="match_parent" >
-
         </dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView>
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>
