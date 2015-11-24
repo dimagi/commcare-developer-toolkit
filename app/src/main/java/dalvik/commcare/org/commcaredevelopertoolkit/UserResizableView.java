@@ -46,8 +46,6 @@ public class UserResizableView extends View {
         Pair<Float, Float> userPos = getCurrentUserPosition(ev);
         float userX = userPos.first;
         float userY = userPos.second;
-        Log.i("11/23", "User touched x: " + userX);
-        Log.i("11/23", "User touched y: " + userY);
 
         final int action = MotionEventCompat.getActionMasked(ev);
         switch(action) {
@@ -64,19 +62,30 @@ public class UserResizableView extends View {
     }
 
     private void handleUserTouch(float x, float y) {
+        Log.i("11/23", "handleUserTouch");
+        Log.i("11/23", "User x: " + x);
+        Log.i("11/23", "User y: " + y);
         if (!resizeInProcess && userTouchNearCurrentCorner(x, y)) {
             resizeInProcess = true;
             lastResizeTouchX = x;
-            lastResizeTouchX = y;
+            lastResizeTouchY = y;
         }
     }
 
     private void handleUserDrag(float x, float y) {
+        Log.i("11/23", "handleUserDrag");
+        Log.i("11/23", "User x: " + x);
+        Log.i("11/23", "User y: " + y);
         if (resizeInProcess) {
             final float dx = x - lastResizeTouchX;
             final float dy = y - lastResizeTouchY;
+            Log.i("11/23", "dx: " + dx);
+            Log.i("11/23", "dy: " + dy);
+
             cornerPositionX += dx;
             cornerPositionY += dy;
+            Log.i("11/23", "x position set to: " + cornerPositionX);
+            Log.i("11/23", "y position set to: " + cornerPositionY);
 
             invalidate();
 
@@ -86,6 +95,7 @@ public class UserResizableView extends View {
     }
 
     private void handleUserRelease() {
+        Log.i("11/23", "handleUserRelease");
         resizeInProcess = false;
     }
 
