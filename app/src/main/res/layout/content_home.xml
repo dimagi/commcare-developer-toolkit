@@ -29,7 +29,7 @@
             android:id="@+id/grid_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:verticalSpacing="0dp"
+            android:verticalSpacing="@dimen/standard_spacer"
             android:horizontalSpacing="0dp"
             android:stretchMode="columnWidth"
             android:numColumns="2"
