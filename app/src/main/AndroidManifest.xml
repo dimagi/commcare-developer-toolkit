@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".utilities.ImageSizingUtility"></activity>
-        <activity android:name=".utilities.StackTraceUtility"></activity>
+        <activity android:name=".activities.ImageSizingActivity"></activity>
+        <activity android:name=".activities.DeviceInfoActivity"></activity>
+        <activity android:name=".activities.StackTraceActivity"></activity>
 
     </application>
 

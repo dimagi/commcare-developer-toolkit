@@ -9,7 +9,6 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 
 /**
  * Created by amstone326 on 11/23/15.

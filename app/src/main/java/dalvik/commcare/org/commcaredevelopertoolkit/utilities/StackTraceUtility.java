@@ -2,15 +2,12 @@ package dalvik.commcare.org.commcaredevelopertoolkit.utilities;
 
 import dalvik.commcare.org.commcaredevelopertoolkit.HomeActivity;
 import dalvik.commcare.org.commcaredevelopertoolkit.R;
+import dalvik.commcare.org.commcaredevelopertoolkit.activities.StackTraceActivity;
 
 /**
  * Created by amstone326 on 11/23/15.
  */
 public class StackTraceUtility extends ToolkitUtility {
-
-    public StackTraceUtility() {
-        super();
-    }
 
     public StackTraceUtility(HomeActivity a) {
         super(a);
@@ -27,8 +24,8 @@ public class StackTraceUtility extends ToolkitUtility {
     }
 
     @Override
-    public Class getClassToLaunch() {
-        return StackTraceUtility.class;
+    public Class getCorrespondingActivity() {
+        return StackTraceActivity.class;
     }
 
 }
