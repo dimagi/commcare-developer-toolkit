@@ -4,6 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="table_row_padding">4dp</dimen>
+
     <dimen name="standard_spacer">8dp</dimen>
     <dimen name="spacer_double">16dp</dimen>
     <dimen name="spacer_triple">24dp</dimen>

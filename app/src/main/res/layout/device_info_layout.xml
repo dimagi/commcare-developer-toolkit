@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <TableRow>
+        <TextView
+            android:text="@string/device_model_label"
+            android:padding="@dimen/table_row_padding" />
+        <TextView
+            android:id="@+id/device_model_value"
+            android:gravity="right"
+            android:padding="@dimen/table_row_padding" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="@string/android_version_label"
+            android:padding="@dimen/table_row_padding" />
+        <TextView
+            android:id="@+id/android_version_value"
+            android:gravity="right"
+            android:padding="@dimen/table_row_padding" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="@string/api_level_label"
+            android:padding="@dimen/table_row_padding" />
+        <TextView
+            android:id="@+id/api_level_value"
+            android:gravity="right"
+            android:padding="@dimen/table_row_padding" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="@string/screen_dimensions_label"
+            android:padding="@dimen/table_row_padding" />
+        <TextView
+            android:id="@+id/screen_dimensions_value"
+            android:gravity="right"
+            android:padding="@dimen/table_row_padding" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="@string/density_label"
+            android:padding="@dimen/table_row_padding" />
+        <TextView
+            android:id="@+id/density_value"
+            android:gravity="right"
+            android:padding="@dimen/table_row_padding" />
+    </TableRow>
+
+</TableLayout>
