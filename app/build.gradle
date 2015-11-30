@@ -21,7 +21,7 @@ android {
         applicationId "dalvik.commcare.org.commcaredevelopertoolkit"
         minSdkVersion 8
         targetSdkVersion 22
-        versionCode 1
+        versionCode getVersionCode()
         versionName "1.0"
     }
 
@@ -46,6 +46,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+
+/**
+ * Get the version code from command line param
+ *
+ * @return int If the param -PversionCode is present then return int value or 1
+ */
+def getVersionCode = { ->
+    def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 1
+    println "VersionCode is set to $code"
+    return code
 }
 
 dependencies {
