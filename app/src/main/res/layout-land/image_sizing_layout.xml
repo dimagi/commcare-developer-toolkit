@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spacer_triple" >
+
+    <TextView
+        android:id="@+id/image_sizing_explanation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/image_sizing_explanation"
+        android:paddingBottom="@dimen/standard_spacer" />
+
+    <RelativeLayout
+        android:id="@+id/middle_bar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_sizing_explanation"
+        android:layout_marginBottom="@dimen/spacer_double" >
+
+        <RelativeLayout
+            android:id="@+id/dimensions_display"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="@dimen/spacer_double" >
+
+            <TextView
+                android:id="@+id/width_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_medium" />
+
+            <TextView
+                android:id="@+id/height_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_medium"
+                android:layout_below="@id/width_display" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/aspect_ratio_buttons_wrapper"
+            android:layout_alignParentRight="true" >
+
+            <Button
+                android:id="@+id/enter_aspect_ratio_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/min_button_height"
+                android:gravity="center"
+                android:text="@string/aspect_ratio_text" />
+
+            <Button
+                android:id="@+id/clear_aspect_ratio_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/min_button_height"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_toRightOf="@id/enter_aspect_ratio_button"
+                android:layout_marginRight="@dimen/standard_spacer"
+                android:text="@string/clear_aspect_ratio_text" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/resizable_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/middle_bar_container" >
+
+        <dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView
+            android:id="@+id/resizable_canvas"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" >
+        </dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
