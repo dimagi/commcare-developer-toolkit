@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import dalvik.commcare.org.commcaredevelopertoolkit.activities.HomeActivity;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ToolkitUtility;
 
 /**

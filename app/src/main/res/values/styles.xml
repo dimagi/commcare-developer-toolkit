@@ -20,4 +20,19 @@
         <item name="android:scrollbars">none</item>
     </style>
 
+    <style name="DeviceInfoRow">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:paddingBottom">@dimen/spacer_double</item>
+    </style>
+    <style name="DeviceInfoTitle">
+        <item name="android:textSize">@dimen/text_size_medium_plus</item>
+        <item name="android:textColor">@color/cc_brand_text</item>
+        <item name="android:padding">@dimen/table_row_padding</item>
+    </style>
+    <style name="DeviceInfoValue">
+        <item name="android:gravity">right</item>
+        <item name="android:padding">@dimen/table_row_padding</item>
+    </style>
+
+
 </resources>

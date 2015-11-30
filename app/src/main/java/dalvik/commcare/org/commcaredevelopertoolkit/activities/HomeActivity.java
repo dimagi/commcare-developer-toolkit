@@ -1,10 +1,12 @@
-package dalvik.commcare.org.commcaredevelopertoolkit;
+package dalvik.commcare.org.commcaredevelopertoolkit.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.GridView;
 
+import dalvik.commcare.org.commcaredevelopertoolkit.GridMenuAdapter;
+import dalvik.commcare.org.commcaredevelopertoolkit.R;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.DeviceInfoUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ImageSizingUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.StackTraceUtility;

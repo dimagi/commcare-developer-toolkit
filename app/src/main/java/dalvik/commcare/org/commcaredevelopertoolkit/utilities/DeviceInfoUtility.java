@@ -1,6 +1,6 @@
 package dalvik.commcare.org.commcaredevelopertoolkit.utilities;
 
-import dalvik.commcare.org.commcaredevelopertoolkit.HomeActivity;
+import dalvik.commcare.org.commcaredevelopertoolkit.activities.HomeActivity;
 import dalvik.commcare.org.commcaredevelopertoolkit.R;
 import dalvik.commcare.org.commcaredevelopertoolkit.activities.DeviceInfoActivity;
 

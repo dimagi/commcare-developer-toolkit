@@ -1,8 +1,8 @@
 package dalvik.commcare.org.commcaredevelopertoolkit.activities;
 
-import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
 
@@ -11,7 +11,7 @@ import dalvik.commcare.org.commcaredevelopertoolkit.R;
 /**
  * Created by amstone326 on 11/24/15.
  */
-public class DeviceInfoActivity extends Activity {
+public class DeviceInfoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

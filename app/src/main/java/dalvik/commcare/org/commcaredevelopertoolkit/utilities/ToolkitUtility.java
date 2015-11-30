@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import dalvik.commcare.org.commcaredevelopertoolkit.HomeActivity;
+import dalvik.commcare.org.commcaredevelopertoolkit.activities.HomeActivity;
 
 /**
  * Created by amstone326 on 11/23/15.
