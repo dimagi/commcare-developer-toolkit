@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Pair;
 import android.view.MotionEvent;
@@ -16,7 +17,6 @@ import android.view.View;
 public class UserResizableView extends View {
 
     private static final double TOUCH_THRESHOLD = 75;
-    private static final float STARTING_CORNER_POS = 500;
 
     private float cornerPositionX;
     private float cornerPositionY;
@@ -40,8 +40,13 @@ public class UserResizableView extends View {
     }
 
     private void initRectangle() {
-        cornerPositionX = STARTING_CORNER_POS;
-        cornerPositionY = STARTING_CORNER_POS;
+        // Initialize the resizable rectangle to take up ~1/2 of the available space (can't just
+        // use the view's getWidth() or getHeight() because onMeasure() hasn't yet been called)
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        cornerPositionX = metrics.widthPixels / 2;
+        // account for the fact that ~1/2 of the screen height is taken up by content that is not
+        // the resizable rectangle
+        cornerPositionY = metrics.heightPixels / 4;
     }
 
     @Override
@@ -141,9 +146,8 @@ public class UserResizableView extends View {
     }
 
     private void applyMinAndMaxRequirements() {
-        float minDimen = getMinAllowedDimension();
-        float boundedX = Math.max(minDimen, Math.min(cornerPositionX, getMaxWidth()));
-        float boundedY = Math.max(minDimen, Math.min(cornerPositionY, getMaxHeight()));
+        float boundedX = Math.max(getMinAllowedWidth(), Math.min(cornerPositionX, getMaxWidth()));
+        float boundedY = Math.max(getMinAllowedHeight(), Math.min(cornerPositionY, getMaxHeight()));
         if (inAspectRatioMode) {
             // If one of the coordinates got constrained, adjust the other to match
             if (boundedX != cornerPositionX) {
@@ -156,17 +160,20 @@ public class UserResizableView extends View {
         cornerPositionY = boundedY;
     }
 
-    public float getMinAllowedDimension() {
-        // TODO: This is a very rough way of estimating what will look too small on different screen sizes; refine later
-        return (float)Math.floor(getMaxWidth() / 11);
+    public float getMinAllowedHeight() {
+        return (float)Math.floor(getMaxHeight() / 10);
+    }
+
+    public float getMinAllowedWidth() {
+        return (float)Math.floor(getMaxWidth() / 10);
     }
 
     public float getMaxWidth() {
-        return getMeasuredWidth()-50;
+        return getMeasuredWidth() - 50;
     }
 
     public float getMaxHeight() {
-        return getMeasuredHeight()-50;
+        return getMeasuredHeight() - 50;
     }
 
     private void redraw(Canvas canvas) {
@@ -198,39 +205,30 @@ public class UserResizableView extends View {
      * @return If the user-provided dimensions were valid for this screen
      */
     public boolean processUserProvidedAspectRatio(float width, float height) {
-        Pair<Float, Float> lockedDimens = checkValidAspectRatio(width, height,
-                getMaxWidth(), getMaxHeight(), getMinAllowedDimension());
+        Pair<Float, Float> lockedDimens = checkValidAspectRatio(width, height);
         if (lockedDimens != null) {
             setLockedAspectRatio(lockedDimens);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
-    private static Pair<Float, Float> checkValidAspectRatio(float width, float height,
-                                                            float maxWidth, float maxHeight,
-                                                            float minAllowedDimension) {
-        // Provided dimens can't be smaller than the min size for this view
-        if (width < minAllowedDimension || height < minAllowedDimension) {
-            return null;
-        }
-
-        // User probably shouldn't have an aspect ratio greater than ~5
-        float larger = Math.max(width, height);
-        float smaller = Math.min(width, height);
-        if (larger / smaller > 5) {
-            return null;
-        }
-
-        if (width > maxWidth || height > maxHeight) {
+    private Pair<Float, Float> checkValidAspectRatio(float width, float height) {
+        if (width > getMaxWidth() || height > getMaxHeight()) {
             // If the entered dimens for the box won't actually fit on screen, scale down
-            double widthScaleDownFactor = Math.floor(maxWidth / width);
-            double heightScaleDownFactor = Math.floor(maxHeight / height);
+            double widthScaleDownFactor = Math.floor(getMaxWidth() / width);
+            double heightScaleDownFactor = Math.floor(getMaxHeight() / height);
             double finalScaleDownFactor = Math.min(widthScaleDownFactor, heightScaleDownFactor);
             width = (float)Math.floor(width * finalScaleDownFactor);
             height = (float)Math.floor(height * finalScaleDownFactor);
         }
+
+        if (width < getMinAllowedWidth() || height < getMinAllowedHeight()) {
+            // The (potentially adjusted) display dimens can't be smaller than the min dimens that
+            // look reasonable on this screen
+            return null;
+        }
+
         return new Pair<>(width, height);
     }
 

@@ -10,7 +10,7 @@
     <string name="height_label">height: </string>
     <string name="button_ok">OK</string>
     <string name="button_cancel">CANCEL</string>
-    <string name="aspect_ratio_invalid_error">The dimensions you provided are either too small to show well on this screen, or represent an aspect ratio that is too large to show well on this screen.</string>
+    <string name="aspect_ratio_invalid_error">The dimensions you provided are either too small to show well on this screen, or represent an aspect ratio that does not show well on this screen.</string>
     <string name="values_not_entered_error">Please enter a value for both dimensions</string>
     <string name="device_model_label">Device Model</string>
     <string name="android_version_label">Android Version</string>
