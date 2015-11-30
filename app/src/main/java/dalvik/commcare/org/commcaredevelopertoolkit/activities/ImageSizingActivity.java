@@ -105,9 +105,9 @@ public class ImageSizingActivity extends Activity implements ResizeListener {
     @Override
     public void onResize(float width, float height) {
         TextView widthDisplay = (TextView) findViewById(R.id.width_display);
-        widthDisplay.setText("width: " + width + " pixels");
+        widthDisplay.setText("width: " + Math.round(width) + " pixels");
         TextView heightDisplay = (TextView) findViewById(R.id.height_display);
-        heightDisplay.setText("height: " + height + " pixels");
+        heightDisplay.setText("height: " + Math.round(height) + " pixels");
     }
 
 }

@@ -27,6 +27,7 @@ public class UserResizableView extends View {
 
     private ResizeListener listener;
     private boolean inAspectRatioMode;
+    private float originalAspectRatio;
 
     public UserResizableView(Context context) {
         super(context);
@@ -106,9 +107,9 @@ public class UserResizableView extends View {
 
     private void doAspectRatioScale(float dx, float dy) {
         if (dx > dy) {
-            dy = dx;
+            dy = dx * (1/originalAspectRatio);
         } else {
-            dx = dy;
+            dx = dy * originalAspectRatio;
         }
         cornerPositionX += dx;
         cornerPositionY += dy;
@@ -141,19 +142,18 @@ public class UserResizableView extends View {
 
     private void applyMinAndMaxRequirements() {
         float minDimen = getMinAllowedDimension();
-        float boundedX = Math.min(cornerPositionX, getMaxWidth());
-        float boundedY = Math.min(cornerPositionY, getMaxHeight());
+        float boundedX = Math.max(minDimen, Math.min(cornerPositionX, getMaxWidth()));
+        float boundedY = Math.max(minDimen, Math.min(cornerPositionY, getMaxHeight()));
         if (inAspectRatioMode) {
-            double xBoundingFactor = boundedX / cornerPositionX;
-            double yBoundingFactor = boundedY / cornerPositionY;
-            if (xBoundingFactor < yBoundingFactor) {
-                boundedY = (float)Math.floor(cornerPositionY * xBoundingFactor);
-            } else {
-                boundedX = (float)Math.floor(cornerPositionX * yBoundingFactor);
+            // If one of the coordinates got constrained, adjust the other to match
+            if (boundedX != cornerPositionX) {
+                boundedY = boundedX * (1/originalAspectRatio);
+            } else if (boundedY != cornerPositionY) {
+                boundedX = boundedY * originalAspectRatio;
             }
         }
-        cornerPositionX = Math.max(minDimen, boundedX);
-        cornerPositionY = Math.max(minDimen, boundedY);
+        cornerPositionX = boundedX;
+        cornerPositionY = boundedY;
     }
 
     public float getMinAllowedDimension() {
@@ -185,6 +185,7 @@ public class UserResizableView extends View {
         inAspectRatioMode = true;
         cornerPositionX = dimens.first;
         cornerPositionY = dimens.second;
+        originalAspectRatio = cornerPositionX / cornerPositionY;
         invalidate();
     }
 
