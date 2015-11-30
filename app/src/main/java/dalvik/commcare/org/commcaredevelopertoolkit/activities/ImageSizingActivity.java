@@ -1,8 +1,8 @@
 package dalvik.commcare.org.commcaredevelopertoolkit.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +15,7 @@ import dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView;
 /**
  * Created by amstone326 on 11/24/15.
  */
-public class ImageSizingActivity extends AppCompatActivity implements ResizeListener {
+public class ImageSizingActivity extends Activity implements ResizeListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

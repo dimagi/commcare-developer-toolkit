@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp" >
+    android:padding="@dimen/spacer_double" >
 
     <TextView
         android:id="@+id/image_sizing_explanation"
