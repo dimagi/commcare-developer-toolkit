@@ -20,8 +20,8 @@
         android:text="@string/home_explanation" />
 
     <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_below="@id/explanation_text">
 
@@ -32,9 +32,20 @@
             android:verticalSpacing="@dimen/standard_spacer"
             android:horizontalSpacing="0dp"
             android:stretchMode="columnWidth"
+            android:layout_gravity="top"
             android:numColumns="2"
             style="@style/GridView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/more_coming_string"
+            android:padding="@dimen/spacer_double" />
+
     </FrameLayout>
+
+
 
 
 </RelativeLayout>
