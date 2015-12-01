@@ -1,6 +1,7 @@
 package dalvik.commcare.org.commcaredevelopertoolkit;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.v4.view.MotionEventCompat;
@@ -169,11 +170,21 @@ public class UserResizableView extends View {
     }
 
     public float getMaxWidth() {
-        return getMeasuredWidth() - 50;
+        float w = getMeasuredWidth() - (getMeasuredWidth() / 20);
+        return w;
     }
 
     public float getMaxHeight() {
-        return getMeasuredHeight() - 50;
+        float h = getMeasuredHeight() - (getMeasuredHeight() / 15);
+        return h;
+    }
+
+    private float getCircleRadius() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            return getMeasuredWidth() / 45;
+        } else {
+            return getMeasuredHeight() / 25;
+        }
     }
 
     private void redraw(Canvas canvas) {
@@ -181,7 +192,7 @@ public class UserResizableView extends View {
         paint.setColor(getResources().getColor(R.color.cc_brand_color));
         canvas.drawRect(0, 0, cornerPositionX, cornerPositionY, paint);
         paint.setColor(getResources().getColor(R.color.cc_neutral_color));
-        canvas.drawCircle(cornerPositionX, cornerPositionY, 30, paint);
+        canvas.drawCircle(cornerPositionX, cornerPositionY, getCircleRadius(), paint);
     }
 
     public void setResizeListener(ResizeListener listener) {
@@ -216,8 +227,8 @@ public class UserResizableView extends View {
     private Pair<Float, Float> checkValidAspectRatio(float width, float height) {
         if (width > getMaxWidth() || height > getMaxHeight()) {
             // If the entered dimens for the box won't actually fit on screen, scale down
-            double widthScaleDownFactor = Math.floor(getMaxWidth() / width);
-            double heightScaleDownFactor = Math.floor(getMaxHeight() / height);
+            double widthScaleDownFactor = getMaxWidth() / width;
+            double heightScaleDownFactor = getMaxHeight() / height;
             double finalScaleDownFactor = Math.min(widthScaleDownFactor, heightScaleDownFactor);
             width = (float)Math.floor(width * finalScaleDownFactor);
             height = (float)Math.floor(height * finalScaleDownFactor);

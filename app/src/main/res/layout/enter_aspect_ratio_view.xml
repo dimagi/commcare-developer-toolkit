@@ -19,7 +19,7 @@
 
         <EditText
             android:id="@+id/user_provided_width"
-            android:layout_width="48dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:inputType="number" />
 
@@ -42,7 +42,7 @@
 
         <EditText
             android:id="@+id/user_provided_height"
-            android:layout_width="48dp"
+            android:layout_width="80dp"
             android:inputType="number"
             android:layout_height="wrap_content" />
 

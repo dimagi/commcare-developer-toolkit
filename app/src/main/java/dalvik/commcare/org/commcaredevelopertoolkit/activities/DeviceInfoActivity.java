@@ -33,7 +33,7 @@ public class DeviceInfoActivity extends AppCompatActivity {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
 
         TextView screenDimens = (TextView) findViewById(R.id.screen_dimensions_value);
-        screenDimens.setText(metrics.widthPixels + " x " + metrics.heightPixels + " pixels");
+        screenDimens.setText(metrics.widthPixels + " x " + metrics.heightPixels);
 
         TextView density = (TextView) findViewById(R.id.density_value);
         density.setText(getDensityString(metrics.densityDpi));

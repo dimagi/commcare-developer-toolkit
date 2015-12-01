@@ -1,7 +1,9 @@
 package dalvik.commcare.org.commcaredevelopertoolkit.utilities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 
 import dalvik.commcare.org.commcaredevelopertoolkit.activities.HomeActivity;
@@ -11,9 +13,9 @@ import dalvik.commcare.org.commcaredevelopertoolkit.activities.HomeActivity;
  */
 public abstract class ToolkitUtility {
 
-    private HomeActivity homeActivity;
+    private Activity homeActivity;
 
-    public ToolkitUtility(HomeActivity a) {
+    public ToolkitUtility(Activity a) {
         this.homeActivity = a;
     }
 
@@ -28,7 +30,11 @@ public abstract class ToolkitUtility {
     }
 
     public Drawable getHomeScreenDrawable() {
-        return homeActivity.getDrawable(getIconResId());
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            return homeActivity.getDrawable(getIconResId());
+        } else {
+            return homeActivity.getResources().getDrawable(getIconResId());
+        }
     }
 
     public abstract Class getCorrespondingActivity();

@@ -47,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/min_button_height"
             android:gravity="center"
+            android:textSize="@dimen/text_size_small"
             android:text="@string/aspect_ratio_text" />
 
         <Button
@@ -57,6 +58,7 @@
             android:visibility="gone"
             android:layout_toLeftOf="@id/enter_aspect_ratio_button"
             android:layout_marginLeft="@dimen/standard_spacer"
+            android:textSize="@dimen/text_size_small"
             android:text="@string/clear_aspect_ratio_text" />
 
     </RelativeLayout>

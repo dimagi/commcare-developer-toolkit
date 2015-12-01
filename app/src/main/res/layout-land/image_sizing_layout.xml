@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/spacer_triple" >
+    android:padding="@dimen/spacer_double" >
 
     <TextView
         android:id="@+id/image_sizing_explanation"
@@ -50,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/min_button_height"
                 android:gravity="center"
+                android:textSize="@dimen/text_size_small"
                 android:text="@string/aspect_ratio_text" />
 
             <Button
@@ -60,6 +61,7 @@
                 android:visibility="gone"
                 android:layout_toRightOf="@id/enter_aspect_ratio_button"
                 android:layout_marginRight="@dimen/standard_spacer"
+                android:textSize="@dimen/text_size_small"
                 android:text="@string/clear_aspect_ratio_text" />
 
         </RelativeLayout>
