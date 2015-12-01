@@ -2,8 +2,12 @@ package dalvik.commcare.org.commcaredevelopertoolkit.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.GridView;
 
 import dalvik.commcare.org.commcaredevelopertoolkit.GridMenuAdapter;
@@ -30,6 +34,21 @@ public class HomeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         gridMenu.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        menu.add("Acknowledgements");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(View.inflate(this, R.layout.acknowledgements_dialog, null));
+        builder.show();
+        return super.onOptionsItemSelected(item);
     }
 
     private ToolkitUtility[] getUtilitiesList() {
