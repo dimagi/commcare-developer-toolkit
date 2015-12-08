@@ -16,7 +16,8 @@
     <string name="android_version_label">Android Version</string>
     <string name="api_level_label">Android API Level</string>
     <string name="screen_dimensions_label">Screen Dimensions</string>
-    <string name="density_label">Screen Density</string>
+    <string name="density_class_label">Screen Density Class</string>
+    <string name="dpi_numeric_label">Device DPI</string>
     <string name="more_coming_string">More utilities will be available soon! Check back for updates.</string>
     <string name="acknowledgements_title">Acknowledgements</string>
     <string name="acknowledgements">

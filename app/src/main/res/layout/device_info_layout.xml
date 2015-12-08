@@ -51,10 +51,19 @@
         <TableRow style="@style/DeviceInfoRow">
             <TextView
                 style="@style/DeviceInfoTitle"
-                android:text="@string/density_label" />
+                android:text="@string/density_class_label" />
             <TextView
                 style="@style/DeviceInfoValue"
-                android:id="@+id/density_value" />
+                android:id="@+id/density_class_value" />
+        </TableRow>
+
+        <TableRow style="@style/DeviceInfoRow">
+            <TextView
+                style="@style/DeviceInfoTitle"
+                android:text="@string/dpi_numeric_label" />
+            <TextView
+                style="@style/DeviceInfoValue"
+                android:id="@+id/dpi_value" />
         </TableRow>
 
     </TableLayout>
