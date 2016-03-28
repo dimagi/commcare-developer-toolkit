@@ -15,7 +15,7 @@ public abstract class ToolkitUtility {
 
     private Activity homeActivity;
 
-    public ToolkitUtility(Activity a) {
+    public ToolkitUtility(HomeActivity a) {
         this.homeActivity = a;
     }
 
