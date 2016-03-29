@@ -16,7 +16,7 @@ public class RefreshToLatestBuildActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_new_build_layout);
+        setContentView(R.layout.refresh_latest_build_layout);
 
         Button startActionButton = (Button)findViewById(R.id.trigger_action);
         startActionButton.setOnClickListener(new View.OnClickListener() {

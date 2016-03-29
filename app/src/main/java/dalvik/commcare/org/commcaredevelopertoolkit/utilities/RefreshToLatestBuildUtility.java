@@ -25,6 +25,6 @@ public class RefreshToLatestBuildUtility extends ToolkitUtility {
 
     @Override
     public int getIconResId() {
-        return R.mipmap.ic_device_info;
+        return R.drawable.ic_refresh;
     }
 }

@@ -21,6 +21,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/trigger_action"
         android:text="@string/trigger_refresh_text"
-        android:layout_centerInParent="true" />
+        android:layout_below="@id/explanation_text"
+        android:textSize="@dimen/text_size_medium"
+        android:layout_marginTop="@dimen/spacer_double"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
