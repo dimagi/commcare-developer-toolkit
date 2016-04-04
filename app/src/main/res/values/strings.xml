@@ -18,6 +18,8 @@
     <string name="screen_dimensions_label">Screen Dimensions</string>
     <string name="density_class_label">Screen Density Class</string>
     <string name="dpi_numeric_label">Device DPI</string>
+    <string name="refresh_build_explanation">This utility is intended to improve the workflow for app-builders who are testing incremental changes to a form. Launching this action will trigger the following sequence of events in your app:\n\n  1) Save the current session, including any form entry progress\n  2) Attempt to automatically update to the latest build\n  3) If the update is successful, log out and log back in as the last user, and then restore the saved session</string>
+    <string name="trigger_refresh_text">Trigger Refresh</string>
     <string name="more_coming_string">More utilities will be available soon! Check back for updates.</string>
     <string name="acknowledgements_title">Acknowledgements</string>
     <string name="acknowledgements">

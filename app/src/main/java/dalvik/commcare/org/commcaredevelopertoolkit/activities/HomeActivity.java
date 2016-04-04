@@ -1,6 +1,5 @@
 package dalvik.commcare.org.commcaredevelopertoolkit.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +13,7 @@ import dalvik.commcare.org.commcaredevelopertoolkit.GridMenuAdapter;
 import dalvik.commcare.org.commcaredevelopertoolkit.R;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.DeviceInfoUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ImageSizingUtility;
+import dalvik.commcare.org.commcaredevelopertoolkit.utilities.RefreshToLatestBuildUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ToolkitUtility;
 
 public class HomeActivity extends AppCompatActivity {
@@ -52,10 +52,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private ToolkitUtility[] getUtilitiesList() {
-        ToolkitUtility[] allUtilities = new ToolkitUtility[2];
+        ToolkitUtility[] allUtilities = new ToolkitUtility[3];
         allUtilities[0] = new ImageSizingUtility(this);
         allUtilities[1] = new DeviceInfoUtility(this);
-        //allUtilities[2] = new StackTraceUtility(this);
+        allUtilities[2] = new RefreshToLatestBuildUtility(this);
         return allUtilities;
     }
 
