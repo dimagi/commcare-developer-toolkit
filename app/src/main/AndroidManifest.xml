@@ -22,6 +22,8 @@
         <activity android:name=".activities.DeviceInfoActivity"></activity>
         <activity android:name=".activities.StackTraceActivity"></activity>
         <activity android:name=".activities.RefreshToLatestBuildActivity"></activity>
+        <activity android:name=".activities.SupportingAppsActivity"></activity>
+
 
     </application>
 
