@@ -20,11 +20,11 @@ public class SupportingAppsUtility extends ToolkitUtility {
 
     @Override
     public String getHomeScreenTitle() {
-        return "Supporting Apps";
+        return "Download Supporting Apps";
     }
 
     @Override
     public int getIconResId() {
-        return R.mipmap.ic_device_info;
+        return R.drawable.ic_app_download;
     }
 }

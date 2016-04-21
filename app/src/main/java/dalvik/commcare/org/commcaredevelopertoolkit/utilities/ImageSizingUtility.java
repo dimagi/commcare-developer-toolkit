@@ -20,7 +20,7 @@ public class ImageSizingUtility extends ToolkitUtility {
 
     @Override
     public int getIconResId() {
-        return R.mipmap.ic_resize_images;
+        return R.drawable.ic_resize_images;
     }
 
     @Override

@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:gravity="center"
+            android:textColor="@color/cc_brand_text"
             android:id="@+id/app_name_view"/>
 
         <TextView

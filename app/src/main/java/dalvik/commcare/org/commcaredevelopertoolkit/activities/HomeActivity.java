@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,8 @@ import dalvik.commcare.org.commcaredevelopertoolkit.utilities.SupportingAppsUtil
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ToolkitUtility;
 
 public class HomeActivity extends AppCompatActivity {
+
+    private static final int APPROX_WIDTH_IN_INCHES_OF_ONE_UTILITY = 1;
 
     private GridView gridMenu;
     private GridMenuAdapter adapter;
@@ -34,7 +37,14 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        gridMenu.setNumColumns(computeOptimalNumberOfColumns());
         gridMenu.setAdapter(adapter);
+    }
+
+    private int computeOptimalNumberOfColumns() {
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int approxScreenWidthInInches = metrics.widthPixels / metrics.densityDpi;
+        return approxScreenWidthInInches / APPROX_WIDTH_IN_INCHES_OF_ONE_UTILITY;
     }
 
     @Override

@@ -28,12 +28,11 @@
         <GridView
             android:id="@+id/grid_menu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:verticalSpacing="@dimen/standard_spacer"
             android:horizontalSpacing="0dp"
             android:stretchMode="columnWidth"
             android:layout_gravity="top"
-            android:numColumns="2"
             style="@style/GridView" />
 
         <TextView
@@ -41,11 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:text="@string/more_coming_string"
-            android:padding="@dimen/spacer_double" />
+            android:padding="@dimen/standard_spacer" />
 
     </FrameLayout>
-
-
-
 
 </RelativeLayout>
