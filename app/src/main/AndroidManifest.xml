@@ -23,7 +23,6 @@
         <activity android:name=".activities.RefreshToLatestBuildActivity"></activity>
         <activity android:name=".activities.SupportingAppsActivity"></activity>
 
-
     </application>
 
 </manifest>
