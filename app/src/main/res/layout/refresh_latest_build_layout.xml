@@ -14,6 +14,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/explanation_text"
         android:text="@string/refresh_build_explanation"
+        android:textSize="16sp"
+        android:textColor="@color/cc_brand_text"
         android:layout_alignParentTop="true" />
 
     <Button
@@ -24,6 +26,7 @@
         android:layout_below="@id/explanation_text"
         android:textSize="@dimen/text_size_medium"
         android:layout_marginTop="@dimen/spacer_double"
+        android:textColor="@color/cc_brand_text"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

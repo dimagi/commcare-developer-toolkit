@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,9 +15,12 @@ import dalvik.commcare.org.commcaredevelopertoolkit.R;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.DeviceInfoUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ImageSizingUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.RefreshToLatestBuildUtility;
+import dalvik.commcare.org.commcaredevelopertoolkit.utilities.SupportingAppsUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ToolkitUtility;
 
 public class HomeActivity extends AppCompatActivity {
+
+    private static final int APPROX_WIDTH_IN_INCHES_OF_ONE_UTILITY = 1;
 
     private GridView gridMenu;
     private GridMenuAdapter adapter;
@@ -33,7 +37,14 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        gridMenu.setNumColumns(computeOptimalNumberOfColumns());
         gridMenu.setAdapter(adapter);
+    }
+
+    private int computeOptimalNumberOfColumns() {
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int approxScreenWidthInInches = metrics.widthPixels / metrics.densityDpi;
+        return approxScreenWidthInInches / APPROX_WIDTH_IN_INCHES_OF_ONE_UTILITY;
     }
 
     @Override
@@ -52,10 +63,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private ToolkitUtility[] getUtilitiesList() {
-        ToolkitUtility[] allUtilities = new ToolkitUtility[3];
-        allUtilities[0] = new ImageSizingUtility(this);
-        allUtilities[1] = new DeviceInfoUtility(this);
+        ToolkitUtility[] allUtilities = new ToolkitUtility[4];
+        allUtilities[0] = new DeviceInfoUtility(this);
+        allUtilities[1] = new ImageSizingUtility(this);
         allUtilities[2] = new RefreshToLatestBuildUtility(this);
+        allUtilities[3] = new SupportingAppsUtility(this);
         return allUtilities;
     }
 
