@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId "dalvik.commcare.org.commcaredevelopertoolkit"
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 22
         versionCode getVersionCode()
         versionName "1.0"
@@ -65,4 +65,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
+    compile 'com.google.firebase:firebase-messaging:9.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
