@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "401789521010",
+    "firebase_url": "https://dimagi-dev-toolkit.firebaseio.com",
+    "project_id": "dimagi-dev-toolkit",
+    "storage_bucket": "dimagi-dev-toolkit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401789521010:android:72afd40f37f0ad95",
+        "android_client_info": {
+          "package_name": "dalvik.commcare.org.commcaredevelopertoolkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401789521010-fbgcr3p16i349t2df3ghla1s1be7ild8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMMrQ9-pmWgCbBx4H-uLhFhxHgFpGQZSg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

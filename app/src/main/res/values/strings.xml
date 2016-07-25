@@ -29,4 +29,6 @@ Some images in this app are graciously used under Creative Commons Licensing fro
 - “Wrench” symbol by Aha Soft \n
 - “Info” symbol by Gregor Črešnar \n
 - “Image” symbol by Icons8 \n</string>
+    <string name = "registration">To register your device to receive push notifications, enter the username and password for your WEB user below.</string>
+    <string name="failure">Something went wrong, we can not register your device for push notifications right now!</string>
 </resources>

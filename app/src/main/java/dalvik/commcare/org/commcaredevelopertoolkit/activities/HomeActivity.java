@@ -15,6 +15,7 @@ import dalvik.commcare.org.commcaredevelopertoolkit.R;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.DeviceInfoUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ImageSizingUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.RefreshToLatestBuildUtility;
+import dalvik.commcare.org.commcaredevelopertoolkit.utilities.RegisterUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.SupportingAppsUtility;
 import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ToolkitUtility;
 
@@ -63,11 +64,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private ToolkitUtility[] getUtilitiesList() {
-        ToolkitUtility[] allUtilities = new ToolkitUtility[4];
+        ToolkitUtility[] allUtilities = new ToolkitUtility[5];
         allUtilities[0] = new DeviceInfoUtility(this);
         allUtilities[1] = new ImageSizingUtility(this);
         allUtilities[2] = new RefreshToLatestBuildUtility(this);
         allUtilities[3] = new SupportingAppsUtility(this);
+        allUtilities[4] = new RegisterUtility(this);
         return allUtilities;
     }
 
@@ -75,6 +77,4 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
-
-
 }
