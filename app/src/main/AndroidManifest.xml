@@ -24,6 +24,12 @@
         <activity android:name=".activities.RefreshToLatestBuildActivity"></activity>
         <activity android:name=".activities.SupportingAppsActivity"></activity>
         <activity android:name=".activities.RegistrationActivity"></activity>
+        
+        <service android:name=".activities.TokenRefreshService">
+            <intent-filter>
+                <action android:name="REFRESH_TOKEN"/>
+            </intent-filter>
+        </service>
 
     </application>
 

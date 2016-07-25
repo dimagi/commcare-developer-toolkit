@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
 import dalvik.commcare.org.commcaredevelopertoolkit.R;
 
 /**
@@ -19,45 +21,46 @@ public class RegistrationActivity extends AppCompatActivity{
 
     private EditText username;
     private EditText password;
-    private Button submit;
-
     private final int REGISTRATION_REQUEST = 5;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
 
-        ActivityCompat.requestPermissions(this,
-                new String[]{"commcare.TEST"}, 0);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_layout);
 
-        submit = (Button) findViewById(R.id.submit);
+        Button submit = (Button) findViewById(R.id.submit);
         password = (EditText) findViewById(R.id.password);
         username = (EditText) findViewById(R.id.username);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getInstanceId();
-                boolean ready = true;
-                String user = username.getText().toString();
-                String pass = password.getText().toString();
-
-                if(user.isEmpty()){
-                    //TODO: Alert for empty field
-                    ready = false;
-                }
-
-                if(pass.isEmpty()){
-                    ready = false;
-                    //TODO: Alert for empty field
-                }
-
-                //TODO: Submit info to HQ endpoint, check if submission was successful
+                registerDevice();
 
             }
         });
+    }
+
+    private void registerDevice() {
+        getInstanceId();
+        String user = username.getText().toString();
+        String pass = password.getText().toString();
+
+        if(user.isEmpty()){
+            //TODO: Alert for empty field
+            return;
+        }
+
+        if(pass.isEmpty()){
+            //TODO: Alert for empty field
+            return;
+        }
+
+        //TODO: Submit info to HQ endpoint, check if submission was successful
+        if(registrationToken != null){
+
+        }
     }
 
     private void getInstanceId() {
@@ -77,6 +80,12 @@ public class RegistrationActivity extends AppCompatActivity{
                 finish();
             }
         }
+        if(resultCode == RESULT_CANCELED){
+            TextView response = (TextView) findViewById(R.id.response_text);
+            response.setText(R.string.failure);
+            response.setVisibility(View.VISIBLE);
+        }
+
     }
 
 }

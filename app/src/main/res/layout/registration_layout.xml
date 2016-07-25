@@ -28,4 +28,10 @@
         android:text="Register"
         android:id="@+id/submit"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/response_text"
+        android:visibility="invisible"/>
+
 </LinearLayout>
