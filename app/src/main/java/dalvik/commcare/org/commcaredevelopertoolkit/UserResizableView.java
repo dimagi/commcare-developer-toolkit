@@ -72,9 +72,6 @@ public class UserResizableView extends View {
 
     private void handleUserTouch(float x, float y) {
         if (!resizeInProcess && userTouchNearCurrentCorner(x, y)) {
-            Log.i("11/23", "handleUserTouch");
-            Log.i("11/23", "User x: " + x);
-            Log.i("11/23", "User y: " + y);
             resizeInProcess = true;
             lastResizeTouchX = x;
             lastResizeTouchY = y;
@@ -83,14 +80,9 @@ public class UserResizableView extends View {
 
     private void handleUserDrag(float x, float y) {
         if (resizeInProcess) {
-            Log.i("11/23", "handleUserDrag");
-            Log.i("11/23", "User x: " + x);
-            Log.i("11/23", "User y: " + y);
 
             final float dx = x - lastResizeTouchX;
             final float dy = y - lastResizeTouchY;
-            Log.i("11/23", "dx: " + dx);
-            Log.i("11/23", "dy: " + dy);
 
             if (inAspectRatioMode) {
                 doAspectRatioScale(dx, dy);
@@ -98,8 +90,6 @@ public class UserResizableView extends View {
                 doNormalScale(dx, dy);
             }
 
-            Log.i("11/23", "x position set to: " + cornerPositionX);
-            Log.i("11/23", "y position set to: " + cornerPositionY);
             invalidate();
             lastResizeTouchX = x;
             lastResizeTouchY = y;
@@ -122,7 +112,6 @@ public class UserResizableView extends View {
     }
 
     private void handleUserRelease() {
-        Log.i("11/23", "handleUserRelease");
         resizeInProcess = false;
     }
 
