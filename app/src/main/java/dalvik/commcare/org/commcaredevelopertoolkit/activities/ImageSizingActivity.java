@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import dalvik.commcare.org.commcaredevelopertoolkit.R;
@@ -34,6 +35,29 @@ public class ImageSizingActivity extends Activity implements ResizeListener {
                 launchAspectRatioDialog();
             }
         });
+        addCollapsibleInstructionsPane();
+    }
+
+    public void addCollapsibleInstructionsPane() {
+        View extraInfoContainer = findViewById(R.id.image_sizing_explanation_container);
+        extraInfoContainer.setVisibility(View.VISIBLE);
+
+        final ImageButton extraInfoButton = (ImageButton)findViewById(R.id.extra_info_button);
+        extraInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleInstructionsVisibility();
+            }
+        });
+    }
+
+    private void toggleInstructionsVisibility() {
+        TextView instructionsText = (TextView)findViewById(R.id.image_sizing_explanation);
+        if (instructionsText.getVisibility() == View.VISIBLE) {
+            instructionsText.setVisibility(View.GONE);
+        } else {
+            instructionsText.setVisibility(View.VISIBLE);
+        }
     }
 
     private void launchAspectRatioDialog() {

@@ -4,18 +4,35 @@
     android:layout_height="match_parent"
     android:padding="@dimen/spacer_double" >
 
-    <TextView
-        android:id="@+id/image_sizing_explanation"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/image_sizing_explanation"
-        android:paddingBottom="@dimen/standard_spacer" />
+        android:id="@+id/image_sizing_explanation_container"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/extra_info_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_button"
+            android:src="@drawable/info_icon" />
+
+        <TextView
+            android:id="@+id/image_sizing_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cc_brand_text"
+            android:text="@string/image_sizing_explanation"
+            android:layout_marginLeft="@dimen/standard_spacer"
+            android:paddingBottom="@dimen/standard_spacer" />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/middle_bar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/image_sizing_explanation"
+        android:layout_below="@id/image_sizing_explanation_container"
         android:layout_marginBottom="@dimen/spacer_double" >
 
         <RelativeLayout
