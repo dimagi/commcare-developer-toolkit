@@ -26,8 +26,9 @@ public class ImageSizingActivity extends Activity implements ResizeListener {
     }
 
     private void setupView() {
-        UserResizableView v = (UserResizableView) findViewById(R.id.resizable_canvas);
+        UserResizableView v = (UserResizableView)findViewById(R.id.resizable_canvas);
         v.setResizeListener(this);
+
         Button b = (Button) findViewById(R.id.enter_aspect_ratio_button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +36,7 @@ public class ImageSizingActivity extends Activity implements ResizeListener {
                 launchAspectRatioDialog();
             }
         });
+
         addCollapsibleInstructionsPane();
     }
 
@@ -42,21 +44,28 @@ public class ImageSizingActivity extends Activity implements ResizeListener {
         View extraInfoContainer = findViewById(R.id.image_sizing_explanation_container);
         extraInfoContainer.setVisibility(View.VISIBLE);
 
-        final ImageButton extraInfoButton = (ImageButton)findViewById(R.id.extra_info_button);
-        extraInfoButton.setOnClickListener(new View.OnClickListener() {
+        final ImageButton toggleInstructionsButton =
+                (ImageButton)findViewById(R.id.toggle_instructions_button);
+        toggleInstructionsButton.setImageResource(R.drawable.collapse_icon);
+        toggleInstructionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toggleInstructionsVisibility();
+                toggleInstructionsVisibility(toggleInstructionsButton);
             }
         });
     }
 
-    private void toggleInstructionsVisibility() {
-        TextView instructionsText = (TextView)findViewById(R.id.image_sizing_explanation);
-        if (instructionsText.getVisibility() == View.VISIBLE) {
-            instructionsText.setVisibility(View.GONE);
+    private void toggleInstructionsVisibility(ImageButton toggleInstructionsButton) {
+        TextView fullInstructionsText = (TextView)findViewById(R.id.image_sizing_explanation);
+        TextView abbreviatedInstructionsText = (TextView)findViewById(R.id.image_sizing_explanation_abbrev);
+        if (fullInstructionsText.getVisibility() == View.VISIBLE) {
+            fullInstructionsText.setVisibility(View.GONE);
+            abbreviatedInstructionsText.setVisibility(View.VISIBLE);
+            toggleInstructionsButton.setImageResource(R.drawable.expand_icon);
         } else {
-            instructionsText.setVisibility(View.VISIBLE);
+            fullInstructionsText.setVisibility(View.VISIBLE);
+            abbreviatedInstructionsText.setVisibility(View.GONE);
+            toggleInstructionsButton.setImageResource(R.drawable.collapse_icon);
         }
     }
 

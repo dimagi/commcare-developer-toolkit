@@ -18,6 +18,7 @@ import android.view.View;
 public class UserResizableView extends View {
 
     private static final double TOUCH_THRESHOLD = 75;
+    private static final int X_START = 35;
 
     private float cornerPositionX;
     private float cornerPositionY;
@@ -132,7 +133,7 @@ public class UserResizableView extends View {
         super.onDraw(canvas);
         applyMinAndMaxRequirements();
         redraw(canvas);
-        listener.onResize(cornerPositionX, cornerPositionY);
+        listener.onResize(cornerPositionX - X_START, cornerPositionY);
     }
 
     private void applyMinAndMaxRequirements() {
@@ -159,13 +160,11 @@ public class UserResizableView extends View {
     }
 
     public float getMaxWidth() {
-        float w = getMeasuredWidth() - (getMeasuredWidth() / 20);
-        return w;
+        return getMeasuredWidth() - (getMeasuredWidth() / 20);
     }
 
     public float getMaxHeight() {
-        float h = getMeasuredHeight() - (getMeasuredHeight() / 15);
-        return h;
+        return getMeasuredHeight() - (getMeasuredHeight() / 15);
     }
 
     private float getCircleRadius() {
@@ -179,7 +178,7 @@ public class UserResizableView extends View {
     private void redraw(Canvas canvas) {
         Paint paint = new Paint();
         paint.setColor(getResources().getColor(R.color.cc_brand_color));
-        canvas.drawRect(0, 0, cornerPositionX, cornerPositionY, paint);
+        canvas.drawRect(X_START, 0, cornerPositionX, cornerPositionY, paint);
         paint.setColor(getResources().getColor(R.color.cc_neutral_color));
         canvas.drawCircle(cornerPositionX, cornerPositionY, getCircleRadius(), paint);
     }
