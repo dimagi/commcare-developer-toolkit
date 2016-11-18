@@ -20,8 +20,6 @@ import dalvik.commcare.org.commcaretoolkit.utilities.components.UserResizableVie
  */
 public class ImageSizingActivity extends Activity implements ResizeListener {
 
-    private boolean alreadyReportedToAnalytics;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,11 +143,11 @@ public class ImageSizingActivity extends Activity implements ResizeListener {
         widthDisplay.setText("width: " + Math.round(width) + " pixels");
         TextView heightDisplay = (TextView)findViewById(R.id.height_display);
         heightDisplay.setText("height: " + Math.round(height) + " pixels");
+    }
 
-        if (!alreadyReportedToAnalytics) {
-            alreadyReportedToAnalytics = true;
-            AnalyticsUtils.reportUtilityUsage(AnalyticsValues.VALUE_IMAGE_SIZING_UTILITY);
-        }
+    @Override
+    public void onFirstResize() {
+        AnalyticsUtils.reportUtilityUsage(AnalyticsValues.VALUE_IMAGE_SIZING_UTILITY);
     }
 
 }

@@ -7,4 +7,6 @@ public interface ResizeListener {
 
     void onResize(float width, float height);
 
+    void onFirstResize();
+
 }

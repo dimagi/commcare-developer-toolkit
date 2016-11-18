@@ -33,6 +33,8 @@ public class UserResizableView extends View {
     private boolean inAspectRatioMode;
     private float originalAspectRatio;
 
+    private boolean hasBeenResizedByUser;
+
     public UserResizableView(Context context) {
         super(context);
         initRectangle();
@@ -115,6 +117,10 @@ public class UserResizableView extends View {
     }
 
     private void handleUserRelease() {
+        if (!hasBeenResizedByUser) {
+            listener.onFirstResize();
+            hasBeenResizedByUser = true;
+        }
         resizeInProcess = false;
     }
 
