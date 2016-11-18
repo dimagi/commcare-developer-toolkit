@@ -10,20 +10,31 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/explanation_text"
-        android:text="@string/refresh_build_explanation"
+        android:id="@+id/explanation_text_1"
+        android:text="@string/refresh_build_explanation_pt1"
         android:textSize="16sp"
         android:textColor="@color/cc_brand_text"
         android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/explanation_text_2"
+        android:text="@string/refresh_build_explanation_pt2"
+        android:textSize="16sp"
+        android:textColor="@color/cc_brand_text"
+        android:layout_marginTop="@dimen/spacer_double"
+        android:gravity="center"
+        android:layout_below="@id/explanation_text_1" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/trigger_action"
         android:text="@string/trigger_refresh_text"
-        android:layout_below="@id/explanation_text"
+        android:layout_below="@id/explanation_text_2"
         android:textSize="@dimen/text_size_medium"
         android:layout_marginTop="@dimen/spacer_double"
         android:textColor="@color/cc_brand_text"
