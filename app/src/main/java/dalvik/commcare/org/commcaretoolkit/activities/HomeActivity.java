@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 
-import dalvik.commcare.org.commcaretoolkit.GridMenuAdapter;
 import dalvik.commcare.org.commcaretoolkit.R;
 import dalvik.commcare.org.commcaretoolkit.utilities.DeviceInfoUtility;
 import dalvik.commcare.org.commcaretoolkit.utilities.ImageSizingUtility;

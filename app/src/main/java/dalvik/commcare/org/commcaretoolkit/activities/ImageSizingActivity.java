@@ -10,8 +10,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import dalvik.commcare.org.commcaretoolkit.R;
-import dalvik.commcare.org.commcaretoolkit.ResizeListener;
-import dalvik.commcare.org.commcaretoolkit.UserResizableView;
+import dalvik.commcare.org.commcaretoolkit.utilities.components.ResizeListener;
+import dalvik.commcare.org.commcaretoolkit.utilities.components.UserResizableView;
 
 /**
  * Created by amstone326 on 11/24/15.

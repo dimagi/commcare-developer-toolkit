@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaretoolkit;
+package dalvik.commcare.org.commcaretoolkit.activities;
 
 import android.content.Context;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import dalvik.commcare.org.commcaretoolkit.R;
 import dalvik.commcare.org.commcaretoolkit.activities.HomeActivity;
 import dalvik.commcare.org.commcaretoolkit.utilities.ToolkitUtility;
 

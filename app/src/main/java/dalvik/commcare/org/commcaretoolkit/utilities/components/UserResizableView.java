@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaretoolkit;
+package dalvik.commcare.org.commcaretoolkit.utilities.components;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -10,6 +10,9 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
+
+import dalvik.commcare.org.commcaretoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.utilities.components.ResizeListener;
 
 /**
  * Created by amstone326 on 11/23/15.
