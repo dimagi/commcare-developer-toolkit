@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaredevelopertoolkit.activities;
+package dalvik.commcare.org.commcaretoolkit.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -10,13 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 
-import dalvik.commcare.org.commcaredevelopertoolkit.GridMenuAdapter;
-import dalvik.commcare.org.commcaredevelopertoolkit.R;
-import dalvik.commcare.org.commcaredevelopertoolkit.utilities.DeviceInfoUtility;
-import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ImageSizingUtility;
-import dalvik.commcare.org.commcaredevelopertoolkit.utilities.RefreshToLatestBuildUtility;
-import dalvik.commcare.org.commcaredevelopertoolkit.utilities.SupportingAppsUtility;
-import dalvik.commcare.org.commcaredevelopertoolkit.utilities.ToolkitUtility;
+import dalvik.commcare.org.commcaretoolkit.GridMenuAdapter;
+import dalvik.commcare.org.commcaretoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.utilities.DeviceInfoUtility;
+import dalvik.commcare.org.commcaretoolkit.utilities.ImageSizingUtility;
+import dalvik.commcare.org.commcaretoolkit.utilities.RefreshToLatestBuildUtility;
+import dalvik.commcare.org.commcaretoolkit.utilities.SupportingAppsUtility;
+import dalvik.commcare.org.commcaretoolkit.utilities.ToolkitUtility;
 
 public class HomeActivity extends AppCompatActivity {
 

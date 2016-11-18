@@ -101,11 +101,11 @@
         android:layout_alignParentBottom="true"
         android:layout_below="@id/aspect_ratio_buttons_wrapper" >
 
-        <dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView
+        <dalvik.commcare.org.commcaretoolkit.UserResizableView
             android:id="@+id/resizable_canvas"
             android:layout_height="match_parent"
             android:layout_width="match_parent" >
-        </dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView>
+        </dalvik.commcare.org.commcaretoolkit.UserResizableView>
 
     </RelativeLayout>
 

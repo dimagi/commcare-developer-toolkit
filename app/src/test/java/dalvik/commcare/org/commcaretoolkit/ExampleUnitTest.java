@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaredevelopertoolkit;
+package dalvik.commcare.org.commcaretoolkit;
 
 import org.junit.Test;
 

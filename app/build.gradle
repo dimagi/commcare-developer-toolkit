@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 ext {
     // Obtained from ~/.gradle/gradle.properties on build server or load default empty strings.
+    ANALYTICS_TRACKING_ID = project.properties['TOOLKIT_ANALYTICS_TRACKING_ID'] ?: ""
     RELEASE_STORE_FILE = project.properties['RELEASE_STORE_FILE'] ?: "."
     RELEASE_STORE_PASSWORD = project.properties['RELEASE_STORE_PASSWORD'] ?: ""
     RELEASE_KEY_ALIAS = project.properties['RELEASE_KEY_ALIAS'] ?: ""
@@ -14,15 +15,16 @@ ext {
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "23.0.2"
+    compileSdkVersion "Google Inc.:Google APIs:24"
+    buildToolsVersion "25.0.0"
 
     defaultConfig {
-        applicationId "dalvik.commcare.org.commcaredevelopertoolkit"
-        minSdkVersion 8
-        targetSdkVersion 22
+        applicationId "dalvik.commcare.org.commcaretoolkit"
+        minSdkVersion 11
+        targetSdkVersion 25
         versionCode getVersionCode()
         versionName "1.0"
+        buildConfigField "String", "ANALYTICS_TRACKING_ID", "\"${project.ext.ANALYTICS_TRACKING_ID}\""
     }
 
     compileOptions {
@@ -65,4 +67,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
+    compile 'com.google.android.gms:play-services-analytics:9.2.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

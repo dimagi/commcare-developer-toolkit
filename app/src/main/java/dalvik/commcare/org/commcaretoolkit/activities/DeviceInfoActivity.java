@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaredevelopertoolkit.activities;
+package dalvik.commcare.org.commcaretoolkit.activities;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
 
-import dalvik.commcare.org.commcaredevelopertoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.R;
 
 /**
  * Created by amstone326 on 11/24/15.

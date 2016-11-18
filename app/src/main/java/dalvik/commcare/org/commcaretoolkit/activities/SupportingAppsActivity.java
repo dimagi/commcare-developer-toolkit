@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaredevelopertoolkit.activities;
+package dalvik.commcare.org.commcaretoolkit.activities;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
-import dalvik.commcare.org.commcaredevelopertoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.R;
 
 /**
  * Created by amstone326 on 4/18/16.
