@@ -11,6 +11,7 @@ import dalvik.commcare.org.commcaretoolkit.ToolkitApplication;
 public class AnalyticsUtils {
 
     public static void reportUtilityUsage(String utilityName) {
+        System.out.println("reporting utility usage for " + utilityName);
         reportEvent(AnalyticsValues.CATEGORY_GENERAL, AnalyticsValues.ACTION_USE_A_UTILITY,
                 utilityName);
     }

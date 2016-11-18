@@ -15,18 +15,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:gravity="center"
             android:textColor="@color/cc_brand_text"
+            android:layout_margin="@dimen/standard_spacer_half"
             android:id="@+id/app_name_view"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="14sp"
-            android:id="@+id/app_link_view"
-            android:autoLink="all"/>
     </LinearLayout>
 
 

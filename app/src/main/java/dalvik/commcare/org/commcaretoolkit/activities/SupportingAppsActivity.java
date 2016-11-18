@@ -1,7 +1,9 @@
 package dalvik.commcare.org.commcaretoolkit.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,20 +59,20 @@ public class SupportingAppsActivity extends Activity {
         }
     }
 
-    private void addRow(TableLayout table, String appName, String appLink, int index) {
+    private void addRow(TableLayout table, String appName, final String appLink, int index) {
         TableLayout rootTable = (TableLayout)LayoutInflater.from(this).inflate(R.layout.supporting_app_row_view, table);
         TableRow row = (TableRow)rootTable.findViewById(R.id.row_view);
         row.setId(index);
 
         TextView appNameView = (TextView)row.findViewById(R.id.app_name_view);
-        TextView appLinkView = (TextView)row.findViewById(R.id.app_link_view);
         appNameView.setText(appName);
-        appLinkView.setText(appLink);
 
-        appLinkView.setOnClickListener(new View.OnClickListener() {
+        appNameView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AnalyticsUtils.reportUtilityUsage(AnalyticsValues.VALUE_SUPPORTING_APPS_UTILITY);
+                SupportingAppsActivity.this.startActivity(
+                        new Intent(Intent.ACTION_VIEW, Uri.parse(appLink)));
             }
         });
     }
