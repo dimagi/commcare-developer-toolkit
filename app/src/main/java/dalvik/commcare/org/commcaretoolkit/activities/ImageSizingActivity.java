@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaredevelopertoolkit.activities;
+package dalvik.commcare.org.commcaretoolkit.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import dalvik.commcare.org.commcaredevelopertoolkit.R;
-import dalvik.commcare.org.commcaredevelopertoolkit.ResizeListener;
-import dalvik.commcare.org.commcaredevelopertoolkit.UserResizableView;
+import dalvik.commcare.org.commcaretoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.ResizeListener;
+import dalvik.commcare.org.commcaretoolkit.UserResizableView;
 
 /**
  * Created by amstone326 on 11/24/15.

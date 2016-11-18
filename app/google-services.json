@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1031376456683",
+    "project_id": "commcare-toolkit"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031376456683:android:6113340e52523eba",
+        "android_client_info": {
+          "package_name": "dalvik.commcare.org.commcaretoolkit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFT9CPWDSj9hOLdqTNbokm9muv1uMpwZg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-69708208-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

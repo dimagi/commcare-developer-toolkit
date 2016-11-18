@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaredevelopertoolkit;
+package dalvik.commcare.org.commcaretoolkit;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;

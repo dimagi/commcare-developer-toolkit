@@ -1,8 +1,8 @@
-package dalvik.commcare.org.commcaredevelopertoolkit.utilities;
+package dalvik.commcare.org.commcaretoolkit.utilities;
 
-import dalvik.commcare.org.commcaredevelopertoolkit.activities.HomeActivity;
-import dalvik.commcare.org.commcaredevelopertoolkit.R;
-import dalvik.commcare.org.commcaredevelopertoolkit.activities.ImageSizingActivity;
+import dalvik.commcare.org.commcaretoolkit.activities.HomeActivity;
+import dalvik.commcare.org.commcaretoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.activities.ImageSizingActivity;
 
 /**
  * Created by amstone326 on 11/23/15.

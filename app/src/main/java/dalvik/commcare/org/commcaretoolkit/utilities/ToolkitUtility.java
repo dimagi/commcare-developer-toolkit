@@ -1,12 +1,11 @@
-package dalvik.commcare.org.commcaredevelopertoolkit.utilities;
+package dalvik.commcare.org.commcaretoolkit.utilities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.view.View;
 
-import dalvik.commcare.org.commcaredevelopertoolkit.activities.HomeActivity;
+import dalvik.commcare.org.commcaretoolkit.activities.HomeActivity;
 
 /**
  * Created by amstone326 on 11/23/15.

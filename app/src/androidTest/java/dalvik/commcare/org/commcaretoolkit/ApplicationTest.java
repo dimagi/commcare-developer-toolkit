@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaredevelopertoolkit;
+package dalvik.commcare.org.commcaretoolkit;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

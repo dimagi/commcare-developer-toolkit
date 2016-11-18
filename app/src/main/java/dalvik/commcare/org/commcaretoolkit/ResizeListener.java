@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaredevelopertoolkit;
+package dalvik.commcare.org.commcaretoolkit;
 
 /**
  * Created by amstone326 on 11/23/15.
