@@ -3,6 +3,7 @@ package dalvik.commcare.org.commcaretoolkit.analytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import dalvik.commcare.org.commcaretoolkit.BuildConfig;
 import dalvik.commcare.org.commcaretoolkit.ToolkitApplication;
 
 /**
@@ -17,36 +18,16 @@ public class AnalyticsUtils {
     }
 
     /**
-     * Report a google analytics event that has only a category and an action
-     */
-    private static void reportEvent(String category, String action) {
-        getTracker().send(new HitBuilders.EventBuilder()
-                .setCategory(category)
-                .setAction(action)
-                .build());
-    }
-
-    /**
      * Report a google analytics event that has a category, action, and label
      */
     private static void reportEvent(String category, String action, String label) {
-        getTracker().send(new HitBuilders.EventBuilder()
-                .setCategory(category)
-                .setAction(action)
-                .setLabel(label)
-                .build());
-    }
-
-    /**
-     * Report a google analytics event that has a category, action, label, and value
-     */
-    private static void reportEvent(String category, String action, String label, int value) {
-        getTracker().send(new HitBuilders.EventBuilder()
-                .setCategory(category)
-                .setAction(action)
-                .setLabel(label)
-                .setValue(value)
-                .build());
+        if (!BuildConfig.DEBUG) {
+            getTracker().send(new HitBuilders.EventBuilder()
+                    .setCategory(category)
+                    .setAction(action)
+                    .setLabel(label)
+                    .build());
+        }
     }
 
     private static Tracker getTracker() {
