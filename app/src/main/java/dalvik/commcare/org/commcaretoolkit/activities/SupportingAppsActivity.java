@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 import dalvik.commcare.org.commcaretoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.analytics.AnalyticsUtils;
+import dalvik.commcare.org.commcaretoolkit.analytics.AnalyticsValues;
 
 /**
  * Created by amstone326 on 4/18/16.
@@ -63,5 +66,12 @@ public class SupportingAppsActivity extends Activity {
         TextView appLinkView = (TextView)row.findViewById(R.id.app_link_view);
         appNameView.setText(appName);
         appLinkView.setText(appLink);
+
+        appLinkView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AnalyticsUtils.reportUtilityUsage(AnalyticsValues.VALUE_SUPPORTING_APPS_UTILITY);
+            }
+        });
     }
 }

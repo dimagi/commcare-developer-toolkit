@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import dalvik.commcare.org.commcaretoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.analytics.AnalyticsUtils;
+import dalvik.commcare.org.commcaretoolkit.analytics.AnalyticsValues;
 import dalvik.commcare.org.commcaretoolkit.utilities.components.ResizeListener;
 import dalvik.commcare.org.commcaretoolkit.utilities.components.UserResizableView;
 
@@ -17,6 +19,8 @@ import dalvik.commcare.org.commcaretoolkit.utilities.components.UserResizableVie
  * Created by amstone326 on 11/24/15.
  */
 public class ImageSizingActivity extends Activity implements ResizeListener {
+
+    private boolean alreadyReportedToAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,10 +141,15 @@ public class ImageSizingActivity extends Activity implements ResizeListener {
 
     @Override
     public void onResize(float width, float height) {
-        TextView widthDisplay = (TextView) findViewById(R.id.width_display);
+        TextView widthDisplay = (TextView)findViewById(R.id.width_display);
         widthDisplay.setText("width: " + Math.round(width) + " pixels");
-        TextView heightDisplay = (TextView) findViewById(R.id.height_display);
+        TextView heightDisplay = (TextView)findViewById(R.id.height_display);
         heightDisplay.setText("height: " + Math.round(height) + " pixels");
+
+        if (!alreadyReportedToAnalytics) {
+            alreadyReportedToAnalytics = true;
+            AnalyticsUtils.reportUtilityUsage(AnalyticsValues.VALUE_IMAGE_SIZING_UTILITY);
+        }
     }
 
 }

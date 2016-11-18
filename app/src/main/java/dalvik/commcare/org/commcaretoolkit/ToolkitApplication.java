@@ -13,6 +13,18 @@ public class ToolkitApplication extends Application {
 
     private Tracker analyticsTracker;
 
+    private static ToolkitApplication app;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        ToolkitApplication.app = this;
+    }
+
+    public static ToolkitApplication instance() {
+        return app;
+    }
+
     synchronized public Tracker getAnalyticsTracker() {
         GoogleAnalytics analyticsInstance = GoogleAnalytics.getInstance(this);
         if (analyticsTracker == null) {
