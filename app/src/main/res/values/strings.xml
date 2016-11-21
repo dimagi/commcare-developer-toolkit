@@ -25,10 +25,4 @@
     <string name="supporting_apps_explanation">Below is a list of other apps that are useful when using CommCare. Click on the name of an app below to view the download page for the app on the Google Play Store.</string>
     <string name="supporting_apps_unavailable">This utility cannot be used on your device because it requires the Google Play Store to be available.</string>
     <string name="more_coming_string">More utilities will be available soon! Check back for updates.</string>
-    <string name="acknowledgements_title">Acknowledgements</string>
-    <string name="acknowledgements">
-Some images in this app are graciously used under Creative Commons Licensing from thenounproject.com collection:\n\n
-- “Wrench” symbol by Aha Soft \n
-- “Info” symbol by Gregor Črešnar \n
-- “Image” symbol by Icons8 \n</string>
 </resources>

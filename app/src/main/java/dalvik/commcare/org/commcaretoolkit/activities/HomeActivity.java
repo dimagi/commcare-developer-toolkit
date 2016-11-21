@@ -46,21 +46,6 @@ public class HomeActivity extends AppCompatActivity {
         return approxScreenWidthInInches / APPROX_WIDTH_IN_INCHES_OF_ONE_UTILITY;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        menu.add("Acknowledgements");
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setView(View.inflate(this, R.layout.acknowledgements_dialog, null));
-        builder.show();
-        return super.onOptionsItemSelected(item);
-    }
-
     private ToolkitUtility[] getUtilitiesList() {
         ToolkitUtility[] allUtilities = new ToolkitUtility[4];
         allUtilities[0] = new DeviceInfoUtility(this);
