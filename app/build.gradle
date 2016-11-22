@@ -25,7 +25,6 @@ android {
         minSdkVersion 11
         targetSdkVersion 25
         versionCode getVersionCode()
-        versionName getVersionName()
         buildConfigField "String", "ANALYTICS_TRACKING_ID", "\"${project.ext.ANALYTICS_TRACKING_ID}\""
         buildConfigField "String", "BUILD_NUMBER", "\"" + getVersionCode() + "\""
     }
@@ -63,11 +62,6 @@ def getVersionCode() {
     def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 1
     println "VersionCode is set to $code"
     return code
-}
-
-def getVersionName() {
-    def manifestParser = new DefaultManifestParser(android.sourceSets.main.manifest.srcFile)
-    return manifestParser.getVersionName()
 }
 
 dependencies {
