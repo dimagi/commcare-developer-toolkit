@@ -24,11 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="dalvik.commcare.org.commcaretoolkit.activities.ImageSizingActivity"></activity>
-        <activity android:name="dalvik.commcare.org.commcaretoolkit.activities.DeviceInfoActivity"></activity>
-        <activity android:name="dalvik.commcare.org.commcaretoolkit.activities.RefreshToLatestBuildActivity"></activity>
-        <activity android:name="dalvik.commcare.org.commcaretoolkit.activities.SupportingAppsActivity"></activity>
-        <activity android:name="dalvik.commcare.org.commcaretoolkit.activities.RawDeviceTestsActivity"></activity>
+        <activity android:name=".activities.ImageSizingActivity"></activity>
+        <activity android:name=".activities.DeviceInfoActivity"></activity>
+        <activity android:name=".activities.RefreshToLatestBuildActivity"></activity>
+        <activity android:name=".activities.SupportingAppsActivity"></activity>
+        <activity android:name=".activities.RawDeviceTestsActivity"></activity>
+        <activity android:name=".activities.DeviceTestDetailsActivity"></activity>
 
     </application>
 

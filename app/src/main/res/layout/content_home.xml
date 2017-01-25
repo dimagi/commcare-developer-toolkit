@@ -11,7 +11,7 @@
     android:gravity="center_horizontal"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_home"
-    tools:context=".HomeActivity">
+    tools:context=".activities.HomeActivity">
 
     <TextView
         android:id="@+id/explanation_text"
@@ -34,13 +34,6 @@
             android:stretchMode="columnWidth"
             android:layout_gravity="top"
             style="@style/GridView" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="@string/more_coming_string"
-            android:padding="@dimen/standard_spacer" />
 
     </FrameLayout>
 

@@ -1,16 +1,14 @@
 package dalvik.commcare.org.commcaretoolkit.activities;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 
 import dalvik.commcare.org.commcaretoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.device.tests.DeviceTestsUtility;
 import dalvik.commcare.org.commcaretoolkit.device.tests.RawTestsRunner;
 import dalvik.commcare.org.commcaretoolkit.device.tests.TestResult;
 
@@ -20,48 +18,46 @@ import dalvik.commcare.org.commcaretoolkit.device.tests.TestResult;
 
 public class RawDeviceTestsActivity extends AppCompatActivity {
 
-    private static final String KEY_COMPUTED_RESULTS = "computed-results";
+    protected static final String KEY_COMPUTED_RESULTS = "computed-results";
 
     private TestResult[] computedResults;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.raw_device_tests_layout);
+        setContentView(R.layout.run_device_tests_layout);
         if (savedInstanceState != null) {
             this.computedResults = (TestResult[])savedInstanceState.getSerializable(KEY_COMPUTED_RESULTS);
-            updateResultsOnScreen();
         }
 
         (findViewById(R.id.run_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                computedResults = RawTestsRunner.run();
-                updateResultsOnScreen();
+                runButtonOnClick();
+            }
+        });
+
+        (findViewById(R.id.view_details_button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RawDeviceTestsActivity.this, DeviceTestDetailsActivity.class);
+                i.putExtra(KEY_COMPUTED_RESULTS, computedResults);
+                startActivity(i);
             }
         });
     }
 
-    private void updateResultsOnScreen() {
-        if (computedResults != null) {
-            ListView lv = (ListView)findViewById(R.id.test_results);
-            lv.setAdapter(new ArrayAdapter<TestResult>(this, android.R.layout.simple_list_item_1,
-                    computedResults) {
+    private void runButtonOnClick() {
+        View progressBar = findViewById(R.id.progress_bar);
+        View resultsView = findViewById(R.id.after_results_computed_view);
 
-                @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
-                    Context context = RawDeviceTestsActivity.this;
-                    View v = convertView;
-                    if (v == null) {
-                        v = View.inflate(context, R.layout.test_result_view, null);
-                    }
-                    TestResult current = this.getItem(position);
-                    ((TextView)v).setText(current.getDisplayString(context));
-                    return v;
-                }
-
-            });
-        }
+        resultsView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+        computedResults = RawTestsRunner.run();
+        resultsView.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+        ((TextView)findViewById(R.id.overall_score)).setText(
+                DeviceTestsUtility.getOverallScoreDisplayString(this, computedResults));
     }
 
     @Override
