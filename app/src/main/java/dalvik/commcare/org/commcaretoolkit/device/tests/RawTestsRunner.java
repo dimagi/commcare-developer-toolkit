@@ -16,7 +16,7 @@ public class RawTestsRunner {
 
         @Override
         String getTestName() {
-            return "Math Op Test 1";
+            return "MATH OP TEST 1";
         }
     };
 
@@ -30,7 +30,7 @@ public class RawTestsRunner {
 
         @Override
         String getTestName() {
-            return "Math Op Test 2";
+            return "MATH OP TEST 2";
         }
     };
 
@@ -44,7 +44,7 @@ public class RawTestsRunner {
 
         @Override
         String getTestName() {
-            return "String Op Test 1";
+            return "STRING OP TEST 1";
         }
     };
 
@@ -59,7 +59,7 @@ public class RawTestsRunner {
 
         @Override
         String getTestName() {
-            return "String Op Test 2";
+            return "STRING OP TEST 2";
         }
     };
 

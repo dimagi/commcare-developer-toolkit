@@ -18,12 +18,11 @@ public abstract class RawTest {
     }
 
     TestResult getTestResult() {
-        long startTime = System.nanoTime();
+        long startTime = System.currentTimeMillis();
         runTest();
-        long endTime = System.nanoTime();
-        long elapsedInNanoSeconds = endTime - startTime;
-        //int elapsedInSeconds = (int)(elapsedInNanoSeconds / 1e9);
-        //int numIterationsInOneSecond = numIterationsToRun() / elapsedInSeconds;
-        return new TestResult(getTestName(), elapsedInNanoSeconds, 0);
+        long endTime = System.currentTimeMillis();
+        long elapsedInMilliseconds = endTime - startTime;
+        int numIterationsInOneMillisecond = numIterationsToRun() / (int)elapsedInMilliseconds;
+        return new TestResult(getTestName(), elapsedInMilliseconds, numIterationsInOneMillisecond);
     }
 }
