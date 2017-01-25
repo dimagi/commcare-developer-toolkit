@@ -13,6 +13,7 @@ import android.widget.GridView;
 import dalvik.commcare.org.commcaretoolkit.R;
 import dalvik.commcare.org.commcaretoolkit.utilities.DeviceInfoUtility;
 import dalvik.commcare.org.commcaretoolkit.utilities.ImageSizingUtility;
+import dalvik.commcare.org.commcaretoolkit.utilities.RawDeviceTestsUtility;
 import dalvik.commcare.org.commcaretoolkit.utilities.RefreshToLatestBuildUtility;
 import dalvik.commcare.org.commcaretoolkit.utilities.SupportingAppsUtility;
 import dalvik.commcare.org.commcaretoolkit.utilities.ToolkitUtility;
@@ -47,11 +48,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private ToolkitUtility[] getUtilitiesList() {
-        ToolkitUtility[] allUtilities = new ToolkitUtility[4];
+        ToolkitUtility[] allUtilities = new ToolkitUtility[5];
         allUtilities[0] = new DeviceInfoUtility(this);
         allUtilities[1] = new ImageSizingUtility(this);
         allUtilities[2] = new RefreshToLatestBuildUtility(this);
         allUtilities[3] = new SupportingAppsUtility(this);
+        allUtilities[4] = new RawDeviceTestsUtility(this);
         return allUtilities;
     }
 
