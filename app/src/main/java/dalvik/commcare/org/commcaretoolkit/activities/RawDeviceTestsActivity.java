@@ -1,6 +1,7 @@
 package dalvik.commcare.org.commcaretoolkit.activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,6 +29,7 @@ public class RawDeviceTestsActivity extends AppCompatActivity {
         setContentView(R.layout.run_device_tests_layout);
         if (savedInstanceState != null) {
             this.computedResults = (TestResult[])savedInstanceState.getSerializable(KEY_COMPUTED_RESULTS);
+            displayOverallScore();
         }
 
         (findViewById(R.id.run_button)).setOnClickListener(new View.OnClickListener() {
@@ -48,16 +50,39 @@ public class RawDeviceTestsActivity extends AppCompatActivity {
     }
 
     private void runButtonOnClick() {
-        View progressBar = findViewById(R.id.progress_bar);
-        View resultsView = findViewById(R.id.after_results_computed_view);
+        final View progressBar = findViewById(R.id.progress_bar);
+        final View resultsView = findViewById(R.id.after_results_computed_view);
 
-        resultsView.setVisibility(View.GONE);
-        progressBar.setVisibility(View.VISIBLE);
-        computedResults = RawTestsRunner.run();
-        resultsView.setVisibility(View.VISIBLE);
-        progressBar.setVisibility(View.GONE);
+        (new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                computedResults = RawTestsRunner.run();
+                return null;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                resultsView.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected void onPostExecute(Void result) {
+                super.onPostExecute(result);
+                resultsView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+                displayOverallScore();
+            }
+
+        }).execute();
+    }
+
+    private void displayOverallScore() {
         ((TextView)findViewById(R.id.overall_score)).setText(
                 DeviceTestsUtility.getOverallScoreDisplayString(this, computedResults));
+
     }
 
     @Override
