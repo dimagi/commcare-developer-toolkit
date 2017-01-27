@@ -57,7 +57,7 @@ public class RawDeviceTestsActivity extends AppCompatActivity {
 
             @Override
             protected Void doInBackground(Void... params) {
-                computedResults = RawTestsRunner.run();
+                computedResults = RawTestsRunner.run(RawDeviceTestsActivity.this);
                 return null;
             }
 

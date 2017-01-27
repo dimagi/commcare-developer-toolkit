@@ -1,15 +1,18 @@
 package dalvik.commcare.org.commcaretoolkit.device.tests;
 
+import android.content.Context;
+
 /**
  * Created by amstone326 on 1/25/17.
  */
 
 public abstract class RawTest {
 
-    private static final int ONE_MILLION = 1000000;
-    private static final int ONE_THOUSAND = 1000;
+    protected static final int TEN_MILLION = 10000000;
+    protected static final int ONE_MILLION = 1000000;
+    protected static final int TEN_THOUSAND = 10000;
 
-    abstract void runTest();
+    abstract void runTest(Context appContext);
 
     abstract String getTestName();
 
@@ -17,9 +20,9 @@ public abstract class RawTest {
         return ONE_MILLION;
     }
 
-    TestResult getTestResult() {
+    TestResult getTestResult(Context appContext) {
         long startTime = System.currentTimeMillis();
-        runTest();
+        runTest(appContext);
         long endTime = System.currentTimeMillis();
         long elapsedInMilliseconds = endTime - startTime;
         int numIterationsInOneMillisecond = numIterationsToRun() / (int)elapsedInMilliseconds;

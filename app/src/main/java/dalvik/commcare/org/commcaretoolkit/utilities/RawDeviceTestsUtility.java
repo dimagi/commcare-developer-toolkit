@@ -21,11 +21,11 @@ public class RawDeviceTestsUtility extends ToolkitUtility {
 
     @Override
     public String getHomeScreenTitle() {
-        return "Run Raw Device Tests";
+        return "Device Performance Tests";
     }
 
     @Override
     public int getIconResId() {
-        return R.drawable.ic_resize_images;
+        return R.drawable.ic_performance_tests;
     }
 }
