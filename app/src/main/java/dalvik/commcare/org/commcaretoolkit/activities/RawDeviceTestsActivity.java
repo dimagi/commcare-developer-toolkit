@@ -22,15 +22,13 @@ public class RawDeviceTestsActivity extends AppCompatActivity {
     protected static final String KEY_COMPUTED_RESULTS = "computed-results";
 
     private TestResult[] computedResults;
+    View resultsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.run_device_tests_layout);
-        if (savedInstanceState != null) {
-            this.computedResults = (TestResult[])savedInstanceState.getSerializable(KEY_COMPUTED_RESULTS);
-            displayOverallScore();
-        }
+        resultsView = findViewById(R.id.after_results_computed_view);
 
         (findViewById(R.id.run_button)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,11 +45,15 @@ public class RawDeviceTestsActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        if (savedInstanceState != null) {
+            this.computedResults = (TestResult[])savedInstanceState.getSerializable(KEY_COMPUTED_RESULTS);
+            displayOverallScore();
+        }
     }
 
     private void runButtonOnClick() {
         final View progressBar = findViewById(R.id.progress_bar);
-        final View resultsView = findViewById(R.id.after_results_computed_view);
 
         (new AsyncTask<Void, Void, Void>() {
 
@@ -71,7 +73,6 @@ public class RawDeviceTestsActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Void result) {
                 super.onPostExecute(result);
-                resultsView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
                 displayOverallScore();
             }
@@ -80,6 +81,7 @@ public class RawDeviceTestsActivity extends AppCompatActivity {
     }
 
     private void displayOverallScore() {
+        resultsView.setVisibility(View.VISIBLE);
         ((TextView)findViewById(R.id.overall_score)).setText(
                 DeviceTestsUtility.getOverallScoreDisplayString(this, computedResults));
 

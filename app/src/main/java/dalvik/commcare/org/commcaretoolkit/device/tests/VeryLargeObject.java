@@ -5,12 +5,12 @@ package dalvik.commcare.org.commcaretoolkit.device.tests;
  */
 public class VeryLargeObject {
 
-    private static final int NUM_OBJECTS = RawTest.ONE_MILLION;
+    private static final int NUM_OBJECTS = RawTest.ONE_THOUSAND;
 
     private static final String A_STRING = "this is a string";
     private static final int AN_INT = 99;
     private static final double A_FLOAT = .5;
-    private static final byte[] SOME_BYTES = new byte[1000];
+    private static final byte[] SOME_BYTES = new byte[RawTest.TEN_THOUSAND];
 
     Object[] tonsOfObjects;
 

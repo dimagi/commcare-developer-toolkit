@@ -14,10 +14,8 @@ public class RawTestsRunner {
     private static RawTest mathOpTest1 = new RawTest() {
 
         @Override
-        void runTest(Context c) {
-            for (int i = 0; i < numIterationsToRun(); i++) {
-                int x = i / 2 % 10;
-            }
+        void runTest(Context c, int iteration) {
+            int x = iteration / 2 % 10;
         }
 
         @Override
@@ -29,10 +27,8 @@ public class RawTestsRunner {
     private static RawTest mathOpTest2 = new RawTest() {
 
         @Override
-        void runTest(Context c) {
-            for (int i = 0; i < numIterationsToRun(); i++) {
-                int x = i * 3 - (i + 50);
-            }
+        void runTest(Context c, int iteration) {
+            int x = iteration * 3 - ( + 50);
         }
 
         @Override
@@ -44,10 +40,8 @@ public class RawTestsRunner {
     private static RawTest stringOpTest1 = new RawTest() {
 
         @Override
-        void runTest(Context c) {
-            for (int i = 0; i < numIterationsToRun(); i++) {
-                String s = "this is a string".substring(1, 6) + "this is another string";
-            }
+        void runTest(Context c, int iteration) {
+            String s = "this is a string".substring(1, 6) + "this is another string";
         }
 
         @Override
@@ -59,11 +53,9 @@ public class RawTestsRunner {
     private static RawTest stringOpTest2 = new RawTest() {
 
         @Override
-        void runTest(Context c) {
-            for (int i = 0; i < numIterationsToRun(); i++) {
-                int index = "this is a string".indexOf("string");
-                String s = "this is a string".substring(index);
-            }
+        void runTest(Context c, int iteration) {
+            int index = "this is a string".indexOf("string");
+            String s = "this is a string".substring(index);
         }
 
         @Override
@@ -75,9 +67,13 @@ public class RawTestsRunner {
     private static RawTest memoryTest1 = new RawTest() {
 
         @Override
-        void runTest(Context c) {
-            byte[] reallyBigArray1 = new byte[TEN_MILLION];
-            byte[] reallyBigArray2 = new byte[TEN_MILLION];
+        int numIterationsToRun() {
+            return TEN_THOUSAND;
+        }
+
+        @Override
+        void runTest(Context c, int iteration) {
+            byte[] reallyBigArray = new byte[ONE_MILLION];
         }
 
         @Override
@@ -89,7 +85,17 @@ public class RawTestsRunner {
     private static RawTest memoryTest2 = new RawTest() {
 
         @Override
-        void runTest(Context c) {
+        int numIterationsToRun() {
+            return TEN_THOUSAND;
+        }
+
+        @Override
+        boolean useSecondsAsTimeUnit() {
+            return true;
+        }
+
+        @Override
+        void runTest(Context c, int iteration) {
             VeryLargeObject o = new VeryLargeObject();
         }
 
@@ -105,11 +111,11 @@ public class RawTestsRunner {
         @Override
         int numIterationsToRun() {
             // We want to run fewer iterations of these
-            return TEN_THOUSAND;
+            return ONE_THOUSAND;
         }
 
         @Override
-        void runTest(Context c) {
+        void runTest(Context c, int iteration) {
             String filename = "my_filename";
             String stringToWrite = "This is some text to write to the file";
 
@@ -140,11 +146,11 @@ public class RawTestsRunner {
         @Override
         int numIterationsToRun() {
             // We want to run fewer iterations of these
-            return TEN_THOUSAND;
+            return ONE_THOUSAND;
         }
 
         @Override
-        void runTest(Context c) {
+        void runTest(Context c, int iteration) {
 
         }
 
@@ -155,8 +161,7 @@ public class RawTestsRunner {
     };
 
     private static final RawTest[] allTests =
-            { mathOpTest1, mathOpTest2, stringOpTest1, stringOpTest2, memoryTest1, memoryTest2,
-                    storageTest1 };
+            { mathOpTest1, mathOpTest2, stringOpTest1, stringOpTest2, memoryTest1, memoryTest2 };
 
     public static TestResult[] run(Context context) {
         TestResult[] results = new TestResult[allTests.length];

@@ -25,8 +25,8 @@
     <string name="supporting_apps_explanation">Below is a list of other apps that are useful when using CommCare. Click on the name of an app below to view the download page for the app on the Google Play Store.</string>
     <string name="supporting_apps_unavailable">This utility cannot be used on your device because it requires the Google Play Store to be available.</string>
     <string name="run_tests_string">Run Tests</string>
-    <string name="device_test_score_string">%s iterations run in 1 millisecond</string>
-    <string name="device_test_duration_string">Time to run all iterations: %s milliseconds</string>
+    <string name="device_test_score_string">%1$s iterations run in 1 %2$s</string>
+    <string name="device_test_duration_string">Time to run all iterations: %1$s %2$s</string>
     <string name="view_test_details">View Detailed Results</string>
     <string name="overall_device_score">Your Device Score is: %s</string>
 </resources>
