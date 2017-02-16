@@ -72,8 +72,14 @@ public class RawTestsRunner {
         }
 
         @Override
+        boolean useSecondsAsTimeUnit() {
+            return true;
+        }
+
+        @Override
         void runTest(Context c, int iteration) {
-            byte[] reallyBigArray = new byte[ONE_MILLION];
+            byte[] reallyBigArray1 = new byte[ONE_MILLION];
+            byte[] reallyBigArray2 = new byte[ONE_MILLION];
         }
 
         @Override
