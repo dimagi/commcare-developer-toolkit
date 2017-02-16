@@ -13,11 +13,11 @@ import dalvik.commcare.org.commcaretoolkit.R;
 public class TestResult implements Serializable {
 
     private String testName;
-    private long timeUnitsToRunAllIterations;
+    private double timeUnitsToRunAllIterations;
     private int iterationsInOneTimeUnit;
     private boolean usesSeconds;
 
-    TestResult(String testName, long timeUnitsToRunAllIterations,
+    TestResult(String testName, double timeUnitsToRunAllIterations,
                int iterationsInOneTimeUnit, boolean usesSeconds) {
         this.testName = testName;
         this.timeUnitsToRunAllIterations = timeUnitsToRunAllIterations;

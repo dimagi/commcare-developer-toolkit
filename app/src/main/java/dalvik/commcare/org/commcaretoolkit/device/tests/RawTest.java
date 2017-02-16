@@ -31,14 +31,11 @@ public abstract class RawTest {
         long startTime = System.currentTimeMillis();
         runAllIterations(appContext);
         long endTime = System.currentTimeMillis();
-        long elapsedTime = endTime - startTime;
+        double elapsedTime = endTime - startTime;
         if (useSecondsAsTimeUnit()) {
             elapsedTime = elapsedTime / 1000;
         }
-        if (elapsedTime == 0) {
-            System.out.println("elapsedTime is 0 for " + getTestName());
-        }
-        int numIterationsInOneTimeUnit = numIterationsToRun() / (int)elapsedTime;
+        int numIterationsInOneTimeUnit = (int)Math.floor(numIterationsToRun() / elapsedTime);
         return new TestResult(getTestName(), elapsedTime, numIterationsInOneTimeUnit, useSecondsAsTimeUnit());
     }
 

@@ -68,6 +68,7 @@ public class RawTestsRunner {
 
         @Override
         int numIterationsToRun() {
+            // this test takes longer so don't run as many
             return TEN_THOUSAND;
         }
 
@@ -92,6 +93,7 @@ public class RawTestsRunner {
 
         @Override
         int numIterationsToRun() {
+            // this test takes longer so don't run as many
             return TEN_THOUSAND;
         }
 
@@ -112,18 +114,23 @@ public class RawTestsRunner {
 
     };
 
-    private static RawTest storageTest1 = new RawTest() {
+    private static RawTest ioOverheadTest = new RawTest() {
 
         @Override
         int numIterationsToRun() {
             // We want to run fewer iterations of these
-            return ONE_THOUSAND;
+            return TEN_THOUSAND;
+        }
+
+        @Override
+        boolean useSecondsAsTimeUnit() {
+            return true;
         }
 
         @Override
         void runTest(Context c, int iteration) {
             String filename = "my_filename";
-            String stringToWrite = "This is some text to write to the file";
+            byte[] aFewBytesToWrite = new byte[30];
 
             // 1) create file
             File file = new File(c.getFilesDir(), filename);
@@ -131,7 +138,7 @@ public class RawTestsRunner {
             // 2) write a small number of bytes to the file
             try {
                 FileOutputStream outputStream = new FileOutputStream(file);
-                outputStream.write(stringToWrite.getBytes());
+                outputStream.write(aFewBytesToWrite);
                 outputStream.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -147,7 +154,9 @@ public class RawTestsRunner {
         }
     };
 
-    private static RawTest storageTest2 = new RawTest() {
+    private static RawTest ioThroughputTest = new RawTest() {
+
+        private String filename = "my_filename";
 
         @Override
         int numIterationsToRun() {
@@ -156,18 +165,43 @@ public class RawTestsRunner {
         }
 
         @Override
-        void runTest(Context c, int iteration) {
+        boolean useSecondsAsTimeUnit() {
+            return true;
+        }
 
+        @Override
+        void runTest(Context c, int iteration) {
+            byte[] oneMegabyteToWrite = new byte[1000000];
+            try {
+                FileOutputStream outputStream = new FileOutputStream(filename);
+                outputStream.write(oneMegabyteToWrite);
+                outputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        void runAllIterations(Context context) {
+            // Create file only once
+            File file = new File(context.getFilesDir(), filename);
+
+            for (int i = 0; i < numIterationsToRun(); i++) {
+                runTest(context, i);
+            }
+
+            // Delete file only once
+            file.delete();
         }
 
         @Override
         String getTestName() {
-            return "STORAGE TEST 1 (IO Throughput)";
+            return "STORAGE TEST 2 (IO Throughput)";
         }
     };
 
-    private static final RawTest[] allTests =
-            { mathOpTest1, mathOpTest2, stringOpTest1, stringOpTest2, memoryTest1, memoryTest2 };
+    private static final RawTest[] allTests = { mathOpTest1, mathOpTest2, stringOpTest1,
+            stringOpTest2, memoryTest1, memoryTest2, ioOverheadTest, ioThroughputTest };
 
     public static TestResult[] run(Context context) {
         TestResult[] results = new TestResult[allTests.length];
