@@ -2,6 +2,8 @@ package dalvik.commcare.org.commcaretoolkit.device.tests;
 
 import android.content.Context;
 
+import java.io.Serializable;
+
 /**
  * Created by amstone326 on 1/25/17.
  */
@@ -14,7 +16,11 @@ public abstract class RawTest {
     protected static final int FIVE_THOUSAND = 10000;
     protected static final int ONE_THOUSAND = 1000;
 
-    abstract void runTest(Context appContext, int iteration);
+    /**
+     *
+     * @return if the test was run successfully
+     */
+    abstract boolean runTest(Context appContext, int iteration);
 
     abstract String getTestName();
 
@@ -27,21 +33,36 @@ public abstract class RawTest {
         return false;
     }
 
-    TestResult getTestResult(Context appContext) {
-        long startTime = System.currentTimeMillis();
-        runAllIterations(appContext);
-        long endTime = System.currentTimeMillis();
-        double elapsedTime = endTime - startTime;
-        if (useSecondsAsTimeUnit()) {
-            elapsedTime = elapsedTime / 1000;
+    /**
+     *
+     * @return If the test was run successfully
+     */
+    boolean runAllIterations(Context context) {
+        for (int i = 0; i < numIterationsToRun(); i++) {
+            if (!runTest(context, i)) {
+                return false;
+            }
         }
-        int numIterationsInOneTimeUnit = (int)Math.floor(numIterationsToRun() / elapsedTime);
-        return new TestResult(getTestName(), elapsedTime, numIterationsInOneTimeUnit, useSecondsAsTimeUnit());
+        return true;
     }
 
-    void runAllIterations(Context context) {
-        for (int i = 0; i < numIterationsToRun(); i++) {
-            runTest(context, i);
+    TestResult getTestResult(Context appContext) {
+        long startTime = System.currentTimeMillis();
+        if (runAllIterations(appContext)) {
+            long endTime = System.currentTimeMillis();
+            double elapsedTime = endTime - startTime;
+            if (useSecondsAsTimeUnit()) {
+                elapsedTime = elapsedTime / 1000;
+            }
+            int numIterationsInOneTimeUnit = (int) Math.floor(numIterationsToRun() / elapsedTime);
+            return new TestResult(getTestName(), elapsedTime, numIterationsInOneTimeUnit, useSecondsAsTimeUnit());
+        }
+        return new TestNotRunResult(getTestName());
+    }
+
+    public class TestNotRunResult extends TestResult {
+        public TestNotRunResult(String testName) {
+            super(testName, -1, -1, false);
         }
     }
 }

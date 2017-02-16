@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import dalvik.commcare.org.commcaretoolkit.R;
+import dalvik.commcare.org.commcaretoolkit.device.tests.RawTest;
 import dalvik.commcare.org.commcaretoolkit.device.tests.TestResult;
 
 /**
@@ -43,7 +44,13 @@ public class DeviceTestDetailsActivity extends Activity {
                         v = View.inflate(context, R.layout.test_result_view, null);
                     }
                     TestResult current = this.getItem(position);
-                    ((TextView)v).setText(current.getDisplayString(context));
+                    String resultString;
+                    if (current instanceof RawTest.TestNotRunResult) {
+                        resultString = "Test could not run";
+                    } else {
+                        resultString = current.getDisplayString(context);
+                    }
+                    ((TextView)v).setText(resultString);
                     return v;
                 }
 

@@ -4,7 +4,9 @@ package dalvik.commcare.org.commcaretoolkit.device.tests;
 import android.content.Context;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by amstone326 on 1/25/17.
@@ -14,8 +16,9 @@ public class RawTestsRunner {
     private static RawTest mathOpTest1 = new RawTest() {
 
         @Override
-        void runTest(Context c, int iteration) {
+        boolean runTest(Context c, int iteration) {
             int x = iteration / 2 % 10;
+            return true;
         }
 
         @Override
@@ -27,8 +30,9 @@ public class RawTestsRunner {
     private static RawTest mathOpTest2 = new RawTest() {
 
         @Override
-        void runTest(Context c, int iteration) {
+        boolean runTest(Context c, int iteration) {
             int x = iteration * 3 - ( + 50);
+            return true;
         }
 
         @Override
@@ -40,8 +44,9 @@ public class RawTestsRunner {
     private static RawTest stringOpTest1 = new RawTest() {
 
         @Override
-        void runTest(Context c, int iteration) {
+        boolean runTest(Context c, int iteration) {
             String s = "this is a string".substring(1, 6) + "this is another string";
+            return true;
         }
 
         @Override
@@ -53,9 +58,10 @@ public class RawTestsRunner {
     private static RawTest stringOpTest2 = new RawTest() {
 
         @Override
-        void runTest(Context c, int iteration) {
+        boolean runTest(Context c, int iteration) {
             int index = "this is a string".indexOf("string");
             String s = "this is a string".substring(index);
+            return true;
         }
 
         @Override
@@ -78,9 +84,10 @@ public class RawTestsRunner {
         }
 
         @Override
-        void runTest(Context c, int iteration) {
+        boolean runTest(Context c, int iteration) {
             byte[] reallyBigArray1 = new byte[ONE_MILLION];
             byte[] reallyBigArray2 = new byte[ONE_MILLION];
+            return true;
         }
 
         @Override
@@ -103,8 +110,9 @@ public class RawTestsRunner {
         }
 
         @Override
-        void runTest(Context c, int iteration) {
+        boolean runTest(Context c, int iteration) {
             VeryLargeObject o = new VeryLargeObject();
+            return true;
         }
 
         @Override
@@ -128,7 +136,7 @@ public class RawTestsRunner {
         }
 
         @Override
-        void runTest(Context c, int iteration) {
+        boolean runTest(Context c, int iteration) {
             String filename = "my_filename";
             byte[] aFewBytesToWrite = new byte[30];
 
@@ -140,12 +148,15 @@ public class RawTestsRunner {
                 FileOutputStream outputStream = new FileOutputStream(file);
                 outputStream.write(aFewBytesToWrite);
                 outputStream.close();
-            } catch (Exception e) {
+            } catch (IOException e) {
                 e.printStackTrace();
+                return false;
             }
 
             // 3) delete file
             file.delete();
+
+            return true;
         }
 
         @Override
@@ -170,28 +181,34 @@ public class RawTestsRunner {
         }
 
         @Override
-        void runTest(Context c, int iteration) {
+        boolean runTest(Context c, int iteration) {
             byte[] oneMegabyteToWrite = new byte[1000000];
             try {
                 FileOutputStream outputStream = new FileOutputStream(filename);
                 outputStream.write(oneMegabyteToWrite);
                 outputStream.close();
-            } catch (Exception e) {
+                return true;
+            } catch (IOException e) {
                 e.printStackTrace();
+                return false;
             }
         }
 
         @Override
-        void runAllIterations(Context context) {
+        boolean runAllIterations(Context context) {
             // Create file only once
             File file = new File(context.getFilesDir(), filename);
 
             for (int i = 0; i < numIterationsToRun(); i++) {
-                runTest(context, i);
+                if (!runTest(context, i)) {
+                    return false;
+                }
             }
 
             // Delete file only once
             file.delete();
+
+            return true;
         }
 
         @Override
