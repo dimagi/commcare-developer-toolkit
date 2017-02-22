@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * Created by amstone326 on 1/25/17.
@@ -75,7 +76,7 @@ public class RawTestsRunner {
         @Override
         int numIterationsToRun() {
             // this test takes longer so don't run as many
-            return TEN_THOUSAND;
+            return ONE_THOUSAND;
         }
 
         @Override
@@ -85,8 +86,8 @@ public class RawTestsRunner {
 
         @Override
         boolean runTest(Context c, int iteration) {
-            byte[] reallyBigArray1 = new byte[ONE_MILLION];
-            byte[] reallyBigArray2 = new byte[ONE_MILLION];
+            byte[] reallyBigArray = new byte[ONE_HUNDRED_THOUSAND];
+            new Random().nextBytes(reallyBigArray);
             return true;
         }
 
@@ -101,7 +102,7 @@ public class RawTestsRunner {
         @Override
         int numIterationsToRun() {
             // this test takes longer so don't run as many
-            return TEN_THOUSAND;
+            return ONE_THOUSAND;
         }
 
         @Override
@@ -127,7 +128,7 @@ public class RawTestsRunner {
         @Override
         int numIterationsToRun() {
             // We want to run fewer iterations of these
-            return TEN_THOUSAND;
+            return ONE_THOUSAND;
         }
 
         @Override
@@ -139,6 +140,7 @@ public class RawTestsRunner {
         boolean runTest(Context c, int iteration) {
             String filename = "my_filename";
             byte[] aFewBytesToWrite = new byte[30];
+            new Random().nextBytes(aFewBytesToWrite);
 
             // 1) create file
             File file = new File(c.getFilesDir(), filename);
@@ -167,7 +169,7 @@ public class RawTestsRunner {
 
     private static RawTest ioThroughputTest = new RawTest() {
 
-        private String filename = "my_filename";
+        private File fileToWriteTo;
 
         @Override
         int numIterationsToRun() {
@@ -182,9 +184,10 @@ public class RawTestsRunner {
 
         @Override
         boolean runTest(Context c, int iteration) {
-            byte[] oneMegabyteToWrite = new byte[1000000];
             try {
-                FileOutputStream outputStream = new FileOutputStream(filename);
+                byte[] oneMegabyteToWrite = new byte[1000000];
+                new Random().nextBytes(oneMegabyteToWrite);
+                FileOutputStream outputStream = new FileOutputStream(this.fileToWriteTo);
                 outputStream.write(oneMegabyteToWrite);
                 outputStream.close();
                 return true;
@@ -195,20 +198,13 @@ public class RawTestsRunner {
         }
 
         @Override
-        boolean runAllIterations(Context context) {
-            // Create file only once
-            File file = new File(context.getFilesDir(), filename);
+        void testSetup(Context context) {
+            fileToWriteTo = new File(context.getFilesDir(), "my_filename_2");
+        }
 
-            for (int i = 0; i < numIterationsToRun(); i++) {
-                if (!runTest(context, i)) {
-                    return false;
-                }
-            }
-
-            // Delete file only once
-            file.delete();
-
-            return true;
+        @Override
+        void testTeardown(Context context) {
+            fileToWriteTo.delete();
         }
 
         @Override
@@ -223,8 +219,10 @@ public class RawTestsRunner {
     public static TestResult[] run(Context context) {
         TestResult[] results = new TestResult[allTests.length];
         for (int i = 0; i < allTests.length; i++) {
+            System.out.println("STARTED running " + allTests[i].getTestName());
             TestResult testResult = allTests[i].getTestResult(context);
             results[i] = testResult;
+            System.out.println("STOPPED running " + allTests[i].getTestName());
         }
         return results;
     }

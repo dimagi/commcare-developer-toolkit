@@ -2,8 +2,6 @@ package dalvik.commcare.org.commcaretoolkit.device.tests;
 
 import android.content.Context;
 
-import java.io.Serializable;
-
 /**
  * Created by amstone326 on 1/25/17.
  */
@@ -17,10 +15,19 @@ public abstract class RawTest {
     protected static final int ONE_THOUSAND = 1000;
 
     /**
-     *
      * @return if the test was run successfully
      */
     abstract boolean runTest(Context appContext, int iteration);
+
+    /**
+     * Perform any one-time setup for this test
+     */
+    void testSetup(Context appContext) { }
+
+    /**
+     * Perform any one-time setup for this test
+     */
+    void testTeardown(Context appContext) { }
 
     abstract String getTestName();
 
@@ -37,7 +44,7 @@ public abstract class RawTest {
      *
      * @return If the test was run successfully
      */
-    boolean runAllIterations(Context context) {
+    private boolean runAllIterations(Context context) {
         for (int i = 0; i < numIterationsToRun(); i++) {
             if (!runTest(context, i)) {
                 return false;
