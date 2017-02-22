@@ -54,6 +54,7 @@ public abstract class RawTest {
     }
 
     TestResult getTestResult(Context appContext) {
+        testSetup(appContext);
         long startTime = System.currentTimeMillis();
         if (runAllIterations(appContext)) {
             long endTime = System.currentTimeMillis();
@@ -62,8 +63,10 @@ public abstract class RawTest {
                 elapsedTime = elapsedTime / 1000;
             }
             int numIterationsInOneTimeUnit = (int) Math.floor(numIterationsToRun() / elapsedTime);
+            testTeardown(appContext);
             return new TestResult(getTestName(), elapsedTime, numIterationsInOneTimeUnit, useSecondsAsTimeUnit());
         }
+        testTeardown(appContext);
         return new TestNotRunResult(getTestName());
     }
 
