@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
 import dalvik.commcare.org.commcaretoolkit.R;
 import dalvik.commcare.org.commcaretoolkit.device.tests.RawTest;
 import dalvik.commcare.org.commcaretoolkit.device.tests.TestResult;
@@ -25,8 +27,9 @@ public class DeviceTestDetailsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.device_test_details);
-        computedResults = (TestResult[])getIntent()
-                .getSerializableExtra(RawDeviceTestsActivity.KEY_COMPUTED_RESULTS);
+        Object[] passedResults =
+                (Object[])getIntent().getSerializableExtra(RawDeviceTestsActivity.KEY_COMPUTED_RESULTS);
+        computedResults = Arrays.copyOf(passedResults, passedResults.length, TestResult[].class);
         updateResultsOnScreen();
     }
 
