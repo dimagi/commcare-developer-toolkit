@@ -4,7 +4,6 @@ package dalvik.commcare.org.commcaretoolkit.device.tests;
 import android.content.Context;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
@@ -17,9 +16,8 @@ public class RawTestsRunner {
     private static RawTest mathOpTest1 = new RawTest() {
 
         @Override
-        boolean runTest(Context c, int iteration) {
+        void runTest(Context c, int iteration) {
             int x = iteration / 2 % 10;
-            return true;
         }
 
         @Override
@@ -31,9 +29,8 @@ public class RawTestsRunner {
     private static RawTest mathOpTest2 = new RawTest() {
 
         @Override
-        boolean runTest(Context c, int iteration) {
+        void runTest(Context c, int iteration) {
             int x = iteration * 3 - ( + 50);
-            return true;
         }
 
         @Override
@@ -45,9 +42,8 @@ public class RawTestsRunner {
     private static RawTest stringOpTest1 = new RawTest() {
 
         @Override
-        boolean runTest(Context c, int iteration) {
+        void runTest(Context c, int iteration) {
             String s = "this is a string".substring(1, 6) + "this is another string";
-            return true;
         }
 
         @Override
@@ -59,10 +55,9 @@ public class RawTestsRunner {
     private static RawTest stringOpTest2 = new RawTest() {
 
         @Override
-        boolean runTest(Context c, int iteration) {
+        void runTest(Context c, int iteration) {
             int index = "this is a string".indexOf("string");
             String s = "this is a string".substring(index);
-            return true;
         }
 
         @Override
@@ -85,10 +80,9 @@ public class RawTestsRunner {
         }
 
         @Override
-        boolean runTest(Context c, int iteration) {
+        void runTest(Context c, int iteration) {
             byte[] reallyBigArray = new byte[ONE_HUNDRED_THOUSAND];
             new Random().nextBytes(reallyBigArray);
-            return true;
         }
 
         @Override
@@ -111,9 +105,8 @@ public class RawTestsRunner {
         }
 
         @Override
-        boolean runTest(Context c, int iteration) {
+        void runTest(Context c, int iteration) {
             VeryLargeObject o = new VeryLargeObject();
-            return true;
         }
 
         @Override
@@ -137,7 +130,7 @@ public class RawTestsRunner {
         }
 
         @Override
-        boolean runTest(Context c, int iteration) {
+        void runTest(Context c, int iteration) {
             String filename = "my_filename";
             byte[] aFewBytesToWrite = new byte[30];
             new Random().nextBytes(aFewBytesToWrite);
@@ -152,13 +145,10 @@ public class RawTestsRunner {
                 outputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
-                return false;
             }
 
             // 3) delete file
             file.delete();
-
-            return true;
         }
 
         @Override
@@ -183,17 +173,15 @@ public class RawTestsRunner {
         }
 
         @Override
-        boolean runTest(Context c, int iteration) {
+        void runTest(Context c, int iteration) {
             try {
                 byte[] oneMegabyteToWrite = new byte[1000000];
                 new Random().nextBytes(oneMegabyteToWrite);
                 FileOutputStream outputStream = new FileOutputStream(this.fileToWriteTo);
                 outputStream.write(oneMegabyteToWrite);
                 outputStream.close();
-                return true;
             } catch (IOException e) {
                 e.printStackTrace();
-                return false;
             }
         }
 

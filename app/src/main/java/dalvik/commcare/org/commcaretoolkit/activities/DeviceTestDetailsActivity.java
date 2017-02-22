@@ -43,13 +43,7 @@ public class DeviceTestDetailsActivity extends Activity {
                     if (v == null) {
                         v = View.inflate(context, R.layout.test_result_view, null);
                     }
-                    TestResult current = this.getItem(position);
-                    String resultString;
-                    if (current instanceof RawTest.TestNotRunResult) {
-                        resultString = "Test could not run";
-                    } else {
-                        resultString = current.getDisplayString(context);
-                    }
+                    String resultString = this.getItem(position).getDisplayString(context);
                     ((TextView)v).setText(resultString);
                     return v;
                 }

@@ -17,7 +17,7 @@ public abstract class RawTest {
     /**
      * @return if the test was run successfully
      */
-    abstract boolean runTest(Context appContext, int iteration);
+    abstract void runTest(Context appContext, int iteration);
 
     /**
      * Perform any one-time setup for this test
@@ -44,35 +44,24 @@ public abstract class RawTest {
      *
      * @return If the test was run successfully
      */
-    private boolean runAllIterations(Context context) {
+    private void runAllIterations(Context context) {
         for (int i = 0; i < numIterationsToRun(); i++) {
-            if (!runTest(context, i)) {
-                return false;
-            }
+            runTest(context, i);
         }
-        return true;
     }
 
     TestResult getTestResult(Context appContext) {
         testSetup(appContext);
         long startTime = System.currentTimeMillis();
-        if (runAllIterations(appContext)) {
-            long endTime = System.currentTimeMillis();
-            double elapsedTime = endTime - startTime;
-            if (useSecondsAsTimeUnit()) {
-                elapsedTime = elapsedTime / 1000;
-            }
-            int numIterationsInOneTimeUnit = (int) Math.floor(numIterationsToRun() / elapsedTime);
-            testTeardown(appContext);
-            return new TestResult(getTestName(), elapsedTime, numIterationsInOneTimeUnit, useSecondsAsTimeUnit());
+        runAllIterations(appContext);
+        long endTime = System.currentTimeMillis();
+        double elapsedTime = endTime - startTime;
+        if (useSecondsAsTimeUnit()) {
+            elapsedTime = elapsedTime / 1000;
         }
+        int numIterationsInOneTimeUnit = (int) Math.floor(numIterationsToRun() / elapsedTime);
         testTeardown(appContext);
-        return new TestNotRunResult(getTestName());
+        return new TestResult(getTestName(), elapsedTime, numIterationsInOneTimeUnit, useSecondsAsTimeUnit());
     }
 
-    public class TestNotRunResult extends TestResult {
-        public TestNotRunResult(String testName) {
-            super(testName, -1, -1, false);
-        }
-    }
 }
