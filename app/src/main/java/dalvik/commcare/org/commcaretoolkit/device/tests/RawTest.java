@@ -10,9 +10,9 @@ public abstract class RawTest {
 
     protected static final int ONE_MILLION = 1000000;
     protected static final int ONE_HUNDRED_THOUSAND = 100000;
-    protected static final int TEN_THOUSAND = 10000;
-    protected static final int FIVE_THOUSAND = 10000;
     protected static final int ONE_THOUSAND = 1000;
+    protected static final int ONE_HUNDRED = 100;
+
 
     /**
      * @return if the test was run successfully

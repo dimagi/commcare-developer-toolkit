@@ -174,7 +174,7 @@ public class RawTestsRunner {
         @Override
         int numIterationsToRun() {
             // We want to run fewer iterations of these
-            return ONE_THOUSAND;
+            return ONE_HUNDRED;
         }
 
         @Override
