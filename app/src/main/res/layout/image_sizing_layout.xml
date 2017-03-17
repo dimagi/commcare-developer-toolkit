@@ -104,7 +104,8 @@
         <dalvik.commcare.org.commcaretoolkit.utilities.components.UserResizableView
             android:id="@+id/resizable_canvas"
             android:layout_height="match_parent"
-            android:layout_width="match_parent" >
+            android:layout_width="match_parent"
+            android:layout_marginLeft="14dp">
         </dalvik.commcare.org.commcaretoolkit.utilities.components.UserResizableView>
 
     </RelativeLayout>

@@ -20,7 +20,6 @@ import dalvik.commcare.org.commcaretoolkit.utilities.components.ResizeListener;
 public class UserResizableView extends View {
 
     private static final double TOUCH_THRESHOLD = 75;
-    private static final int X_START = 35;
 
     private float cornerPositionX;
     private float cornerPositionY;
@@ -141,7 +140,7 @@ public class UserResizableView extends View {
         super.onDraw(canvas);
         applyMinAndMaxRequirements();
         redraw(canvas);
-        listener.onResize(cornerPositionX - X_START, cornerPositionY);
+        listener.onResize(cornerPositionX, cornerPositionY);
     }
 
     private void applyMinAndMaxRequirements() {
@@ -186,7 +185,7 @@ public class UserResizableView extends View {
     private void redraw(Canvas canvas) {
         Paint paint = new Paint();
         paint.setColor(getResources().getColor(R.color.cc_brand_color));
-        canvas.drawRect(X_START, 0, cornerPositionX, cornerPositionY, paint);
+        canvas.drawRect(0, 0, cornerPositionX, cornerPositionY, paint);
         paint.setColor(getResources().getColor(R.color.cc_neutral_color));
         canvas.drawCircle(cornerPositionX, cornerPositionY, getCircleRadius(), paint);
     }
