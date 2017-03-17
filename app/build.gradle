@@ -1,5 +1,3 @@
-import com.android.builder.core.DefaultManifestParser
-
 apply plugin: 'com.android.application'
 
 ext {
@@ -24,9 +22,9 @@ android {
         applicationId "dalvik.commcare.org.commcaretoolkit"
         minSdkVersion 11
         targetSdkVersion 25
-        versionCode getVersionCode()
+        versionCode computeVersionCode()
         buildConfigField "String", "ANALYTICS_TRACKING_ID", "\"${project.ext.ANALYTICS_TRACKING_ID}\""
-        buildConfigField "String", "BUILD_NUMBER", "\"" + getVersionCode() + "\""
+        buildConfigField "String", "BUILD_NUMBER", "\"" + computeVersionCode() + "\""
     }
 
     compileOptions {
@@ -58,7 +56,7 @@ android {
  *
  * @return int If the param -PversionCode is present then return int value or 1
  */
-def getVersionCode() {
+def computeVersionCode() {
     def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 1
     println "VersionCode is set to $code"
     return code
