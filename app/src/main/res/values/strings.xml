@@ -14,15 +14,21 @@
     <string name="aspect_ratio_invalid_error">The dimensions you provided are either too small to show well on this screen, or represent an aspect ratio that does not show well on this screen.</string>
     <string name="values_not_entered_error">Please enter a value for both dimensions</string>
     <string name="device_model_label">Device Model</string>
+    <string name="manufacturer_label">Manufacturer</string>
     <string name="android_version_label">Android Version</string>
     <string name="api_level_label">Android API Level</string>
     <string name="screen_dimensions_label">Screen Dimensions</string>
     <string name="density_class_label">Screen Density Class</string>
     <string name="dpi_numeric_label">Device DPI</string>
+    <string name="ram_label">Total RAM</string>
     <string name="refresh_build_explanation_pt1">This utility is intended to improve the workflow for app-builders who are testing incremental changes to a form. Launching this action will trigger the following sequence of events in your app:</string>
     <string name="refresh_build_explanation_pt2">1. Save the current session, including any form entry progress.\n\n  2. Update to the latest build.\n\n  3. If the update is successful, log back in as the last user, and then restore the saved session.</string>
     <string name="trigger_refresh_text">Trigger Refresh</string>
     <string name="supporting_apps_explanation">Below is a list of other apps that are useful when using CommCare. Click on the name of an app below to view the download page for the app on the Google Play Store.</string>
     <string name="supporting_apps_unavailable">This utility cannot be used on your device because it requires the Google Play Store to be available.</string>
-    <string name="more_coming_string">More utilities will be available soon! Check back for updates.</string>
+    <string name="run_tests_string">Run Tests</string>
+    <string name="device_test_score_string">%1$s iterations run in 1 %2$s</string>
+    <string name="device_test_duration_string">Time to run all iterations: %1$s %2$s</string>
+    <string name="view_test_details">View Detailed Results</string>
+    <string name="overall_device_score">Your Device Score is: %s</string>
 </resources>
