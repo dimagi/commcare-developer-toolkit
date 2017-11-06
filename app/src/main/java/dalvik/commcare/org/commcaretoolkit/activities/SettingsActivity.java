@@ -9,7 +9,6 @@ import dalvik.commcare.org.commcaretoolkit.fragments.ToolkitSettings;
 /**
  * Created by amstone326 on 11/6/17.
  */
-
 public class SettingsActivity extends AppCompatActivity {
 
     @Override

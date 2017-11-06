@@ -11,7 +11,6 @@ import dalvik.commcare.org.commcaretoolkit.ToolkitApplication;
 /**
  * Created by amstone326 on 11/6/17.
  */
-
 public class ToolkitSettings extends PreferenceFragment {
 
     private static final String PREFS_FILENAME = "cctoolkit-shared-preferences-file";
