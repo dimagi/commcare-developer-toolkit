@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name="dalvik.commcare.org.commcaretoolkit.activities.HomeActivity"
+            android:name=".activities.HomeActivity"
             android:label="@string/display_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -24,10 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="dalvik.commcare.org.commcaretoolkit.activities.ImageSizingActivity"></activity>
-        <activity android:name="dalvik.commcare.org.commcaretoolkit.activities.DeviceInfoActivity"></activity>
-        <activity android:name="dalvik.commcare.org.commcaretoolkit.activities.RefreshToLatestBuildActivity"></activity>
-        <activity android:name="dalvik.commcare.org.commcaretoolkit.activities.SupportingAppsActivity"></activity>
+        <activity android:name=".activities.ImageSizingActivity"></activity>
+        <activity android:name=".activities.DeviceInfoActivity"></activity>
+        <activity android:name=".activities.RefreshToLatestBuildActivity"></activity>
+        <activity android:name=".activities.SupportingAppsActivity"></activity>
+        <activity android:name=".activities.SettingsActivity"></activity>
 
     </application>
 

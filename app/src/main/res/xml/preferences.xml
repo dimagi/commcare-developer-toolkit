@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:enabled="true"
+        android:entries="@array/target_apk_labels"
+        android:entryValues="@array/target_apk_values"
+        android:key="target-package-id"
+        android:title="Target Package Identifier"/>
+</PreferenceScreen>
