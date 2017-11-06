@@ -1,4 +1,4 @@
-package dalvik.commcare.org.commcaretoolkit.activities;
+package dalvik.commcare.org.commcaretoolkit.components;
 
 import android.content.Context;
 import android.view.View;

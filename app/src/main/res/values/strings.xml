@@ -25,4 +25,17 @@
     <string name="supporting_apps_explanation">Below is a list of other apps that are useful when using CommCare. Click on the name of an app below to view the download page for the app on the Google Play Store.</string>
     <string name="supporting_apps_unavailable">This utility cannot be used on your device because it requires the Google Play Store to be available.</string>
     <string name="more_coming_string">More utilities will be available soon! Check back for updates.</string>
+    <string name="menu_settings">Settings</string>
+    <string name="settings_title">CommCare Toolkit Settings</string>
+
+    <string-array name="target_apk_labels">
+        <item>CommCare</item>
+        <item>CommCare LTS</item>
+        <item>CommCare Debug</item>
+    </string-array>
+    <string-array name="target_apk_values">
+        <item>org.commcare.dalvik</item>
+        <item>org.commcare.lts</item>
+        <item>org.commcare.dalvik.debug</item>
+    </string-array>
 </resources>

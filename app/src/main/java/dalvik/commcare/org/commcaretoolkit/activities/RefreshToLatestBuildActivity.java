@@ -9,6 +9,7 @@ import android.widget.Button;
 import dalvik.commcare.org.commcaretoolkit.R;
 import dalvik.commcare.org.commcaretoolkit.analytics.AnalyticsUtils;
 import dalvik.commcare.org.commcaretoolkit.analytics.AnalyticsValues;
+import dalvik.commcare.org.commcaretoolkit.fragments.ToolkitSettings;
 
 /**
  * Created by amstone326 on 3/18/16.
@@ -27,7 +28,8 @@ public class RefreshToLatestBuildActivity extends AppCompatActivity {
                 AnalyticsUtils.reportUtilityUsage(AnalyticsValues.VALUE_REFRESH_UTILITY);
                 Intent intent = new Intent();
                 intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
-                intent.setAction("org.commcare.dalvik.api.action.RefreshToLatestBuildAction");
+                intent.setAction(String.format("%s.api.action.RefreshToLatestBuildAction",
+                        ToolkitSettings.getTargetPackageId()));
                 sendBroadcast(intent);
             }
         });
